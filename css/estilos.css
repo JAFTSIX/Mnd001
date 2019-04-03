@@ -1,0 +1,261 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    background: #ababab !important;/*gris*/
+
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#logo{
+    height: 60px;
+    padding-right: 5px;
+}
+
+.navegador{
+    background-color: #333;/*gris oscuro*/
+    overflow: hidden;
+    width: 100%;
+    margin: 0px;
+}
+
+.navegador a {
+    color: #fff;/*blanco*/
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.navegador a:hover {
+    background-color: #ddd;/*gris claro*/
+    color: black;
+}
+
+.navegador a.activo {
+    background-color: #4CAF50;/*verde*/
+    color: white;
+}
+
+.navegador > li {
+    float: left;
+}
+
+.navegador li ul{
+    display: none;
+    position: absolute;
+    min-width: 100px;
+}
+
+.navegador > li.drop > a:after {
+    content: "▲";
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font: normal 16px/1 'dashicons';
+    padding-left: 3px;
+    vertical-align: top;
+}
+
+ul, ol {
+    list-style: none;
+    text-align: center;
+    padding:14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navegador .drop:hover .submenu{
+    display: block;
+    text-align: left;
+    background: #c4c6c4;/*gris*/
+    z-index: 2;
+}
+
+.item {
+    position: absolute;
+    text-align: center;
+}
+
+.navegador > li.drop:hover  > a:after{
+    content: "▼";
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font: normal 16px/1 'dashicons';
+    padding-left: 3px;
+    vertical-align: top;
+}
+
+/*caja padre*/
+.contenido{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 20px;
+    background: aqua;  /*quitar*/
+}
+
+.contenido ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+/*la caja*/
+.contenido ul li{
+    float:left;
+    list-style: none;
+    width:20%;
+    height:auto;
+    background: yellow;/*#d8d8d8*/
+    margin :20px 0px 20px 55px; 
+    border:2px solid #000;
+    box-sizing: border-box;
+}
+
+.contenido ul li:hover{
+    opacity: 0.6;
+}
+
+/*Texto del item*/
+.contenido ul li > .bottom{
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    line-height: 50px;
+    background: #000;    
+    text-align: center;
+    color:white;
+    font-size: 20px;
+
+}
+
+/*imagen del producto*/
+.contenido ul li img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 700px) {
+    .contenido {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .contenido {
+        width: 90%;
+    }
+}
+
+.selec{
+    position: absolute;
+    width: 80%;
+    height: 55%;
+    border:2px solid #000;
+    box-sizing: border-box;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 5%;
+    margin-left: 10%;
+    background: #ddd;  /*quitar*/
+}
+
+.selec img{
+    float: left;
+    height: auto;
+    width: 25%;
+    max-width:  250px;
+    min-width: 150px;
+    margin: 10px;
+    border: 2px solid #000;
+}
+
+.selec .bottom{
+    width: 100%;
+    position: relative;
+    line-height: 50px;
+    background: #000;    
+    text-align: left;
+    padding-left: 10%;
+    color:white;
+    font-size: 20px;
+
+}
+
+.selec .item{
+    width: 100%;
+    height: auto;
+}
+
+.selec .titulo{
+    position: absolute;
+    padding-left: 5%;
+    padding-top: 0.9%;
+    margin-bottom: 1%;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    font-size: 20px;
+}
+
+.selec .desc{
+    position: absolute;
+    text-align: center;
+    font-weight: 100;
+    padding-left: 4%;
+    padding-right: 4%;
+    text-align: center;
+}
+
+ hr{
+    background-color: #4caf50;
+    height: 5px;
+    margin-top: 10px;
+}
+
+.selec .precio{
+    font-size: 20px;
+    text-decoration: none;
+    position: absolute;
+    margin-right: 50px;
+    top: 75%;
+    right: 1%;
+    color: #4caf50;
+    
+}
+
+.boton {
+	background-color:#4caf50;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:10px 15px;
+	text-decoration:none;
+}
+.boton:hover {
+	background-color:#ababab;
+}
+.boton:active {
+	position:relative;
+	top:1px;
+}
+
+.selec .boton{
+    position: absolute;
+    top:82%;
+    right: 2%;
+}
+
