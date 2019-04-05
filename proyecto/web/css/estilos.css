@@ -99,7 +99,7 @@ ul, ol {
     margin: auto;
     overflow: hidden;
     margin-top: 20px;
-    background: aqua;  /*quitar*/
+    background: #666666;  /*quitar*/
 }
 
 .contenido ul{
