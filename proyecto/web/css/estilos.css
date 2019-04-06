@@ -99,7 +99,7 @@ ul, ol {
     margin: auto;
     overflow: hidden;
     margin-top: 20px;
-    background: #666666;  /*quitar*/
+    /*background: aqua;*/  /*quitar*//*Esto se puede quitar o cambiar el color aqua es para pruebas*/
 }
 
 .contenido ul{
@@ -113,7 +113,7 @@ ul, ol {
     list-style: none;
     width:20%;
     height:auto;
-    background: yellow;/*#d8d8d8*/
+    background: yellow;/*#d8d8d8*//*Esto es para pruebas pero se puede quitar o cambiar luego*/
     margin :20px 0px 20px 55px; 
     border:2px solid #000;
     box-sizing: border-box;
