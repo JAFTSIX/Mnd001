@@ -9,9 +9,25 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>compra</servlet-name>
+        <servlet-class>model.compra</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>el_arti</servlet-name>
+        <servlet-class>model.el_arti</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>compra</servlet-name>
+        <url-pattern>/compra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>el_arti</servlet-name>
+        <url-pattern>/el_arti</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,6 +35,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.jsp</welcome-file>
+        <welcome-file>A2.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
