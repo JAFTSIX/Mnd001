@@ -4,13 +4,13 @@
 create table articulo(
 
 id varchar(10) primary key,
-
 nombres varchar(50),
 img varchar(300),
 descripcion varchar(1000),
-tipo varchar(3)
-);
+tipo varchar(3),
+precio double
 
+);
 
 INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO) 
 	VALUES ('A1', 'negro', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1');
