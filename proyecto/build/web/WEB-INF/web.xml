@@ -15,7 +15,7 @@
     </servlet>
     <servlet>
         <servlet-name>el_arti</servlet-name>
-        <servlet-class>model.el_arti</servlet-class>
+        <servlet-class>controller.el_arti</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>

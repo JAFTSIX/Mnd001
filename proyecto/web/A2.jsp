@@ -4,6 +4,8 @@
     Author     : Usuario
 --%>
 
+<%@page import="model.usuario"%>
+<%@page import="model.negocio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
@@ -29,9 +31,15 @@
                     <li><a href="#categoria3">Categoria 3</a></li>
                 </ul>
             </li>
-
+ 
             <li><a href="#carrito">Carrito</a></li>
             <li><a href="#SobreNosotros">Sobre nosotros</a></li>
+            <c:if test="${usuario.inicio}">
+            <li><%= usuario.getNombre() %></li>
+            </c:if>
+            <c:if test="${usuario.inicio==false}">
+            <li><a href="faces/inicio_login.xhtml">login</a></li>
+            </c:if>
         </ul>
 
     <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
