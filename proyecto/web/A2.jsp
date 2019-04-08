@@ -37,7 +37,7 @@
     <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
     <sql:query var="lol" dataSource="${LADB}">
-        SELECT * FROM A.ARTICULO FETCH FIRST 10 ROWS ONLY
+        SELECT * FROM A.ARTICULO FETCH FIRST 7 ROWS ONLY
     </sql:query>
 
 
@@ -54,6 +54,7 @@
                         <input type="hidden" name="img" value="${nispe.img}" />
                         <input type="hidden" name="descripcion" value="${nispe.descripcion}" />
                         <input type="hidden" name="precio" value="${nispe.precio}" />
+                        <input type="hidden" name="id" value="${nispe.id}" />
                     </li>
                 </form>
             </c:forEach>

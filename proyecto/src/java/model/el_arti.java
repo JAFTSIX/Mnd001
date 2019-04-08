@@ -5,6 +5,7 @@
  */
 package model;
 
+import controller.negocio;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,10 @@ public class el_arti extends HttpServlet {
         String img=request.getParameter("img");
         String descripcion=request.getParameter("descripcion");
         String precio=request.getParameter("precio");
+        String id=request.getParameter("id");
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        
+        negocio.setArti_momento(id);
      request.setAttribute(precio,precio);
      request.setAttribute(descripcion,descripcion);
      request.setAttribute(img, img);

@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : el_articulo
     Created on : 07-abr-2019, 19:54:11
@@ -29,9 +30,12 @@
         String img=request.getParameter("img");
         String descripcion=request.getParameter("descripcion");
         String precio=request.getParameter("precio");
+        String id =request.getParameter("id");
         
-                    
             %>
+            
+            <c:if test = "${id}">
+            </c:if>
             <ul class="navegador">
                 <img src="imagenes/ej.jpg" alt="Logo" title="Logo" id="logo" align="left"/>
                 <li><a href="index_anterior.xhtml">Inicio</a></li>
@@ -61,6 +65,7 @@
                 <a href="#" class="precio">
                     ₡<%=precio%>
                 </a>
+                
                 <a href="#" class="boton">Añadir al carrito</a>
 
 
