@@ -1,0 +1,90 @@
+//(CREA UNA BASE DE DATOS LLAMADA='a' USER='a' PASSWORD='a' )
+******inserta todo esto en la db*************
+
+id varchar(10) primary key,
+
+nombres varchar(50),
+img varchar(300),
+descripcion varchar(1000),
+tipo varchar(3),
+precio double
+);
+
+Alter table articulo add precio double ;
+
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A1', 'negro', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A2', 'ITEM 2', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A3', 'ITEM 3', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A4', 'ITEM 4', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A5', 'ITEM 5', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A6', 'ITEM 6', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
+INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
+	VALUES ('A7', 'ITEM 7', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
+
+
+SELECT * FROM A.ARTICULO FETCH FIRST 10 ROWS ONLY;
+
+create table cliente(
+
+
+id_cliente varchar(10) primary key,
+nombre varchar(50),
+apellido varchar(50)
+);
+
+create table cuenta(
+
+
+id_cliente varchar(10) ,
+id varchar(10) primary key,
+username varchar(50),
+pass varchar(300),
+correo varchar(1000),
+ constraint  fkc_id foreign key(id_CLIENTE) 
+REFERENCES CLIENTE(id_CLIENTE)
+
+);
+
+create table tarjeta(
+
+id_cliente varchar(10) ,
+id varchar(10) primary key,
+username varchar(50),
+pass varchar(300),
+correo varchar(1000),
+
+CONSTRAINT FKT_CLIENTE FOREIGN KEY (id_CLIENTE) 
+REFERENCES CLIENTE(id_CLIENTE)
+);
+
+
+INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
+	VALUES ('c1', 'JUAN', 'VINAGRE')
+
+INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
+	VALUES ('c2', 'MARIA', 'VINAGRE');
+INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
+	VALUES ('c3', 'JOSUE', 'VINAGRE');
+INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
+	VALUES ('c4', 'JONATHAN', 'JOESTAR');
+INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
+	VALUES ('c5', 'JOSUKE', 'HIGASHIKATA');
+
+
+
+INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
+	VALUES ('c1', 'CN1', 'JUANXXX', '1', 'ASJD@GMAIL.COM');
+INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
+	VALUES ('c2', 'CN2', 'J', '1', 'ASJD@GMAIL.COM');
+
+INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
+	VALUES ('c3', 'CN3', 'A', '1', 'ASJD@GMAIL.COM');
+
+INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
+	VALUES ('c4', 'CN4', 'B', '1', 'ASJD@GMAIL.COM');
