@@ -30,46 +30,53 @@
                     <li><a href="#categoria3">Categoria 3</a></li>
                 </ul>
             </li>
- 
+
             <li><a href="#carrito">Carrito</a></li>
             <li><a href="#SobreNosotros">Sobre nosotros</a></li>
-            <% boolean x =model.usuario.isInicio(); %>
-            <c:if test="${model.usuario.isInicio()}"/>
-            <li><%= model.usuario.getNombre() %></li>
-         
-            <c:if test="${x eq false}"/>
+
+
+            <%
+
+                if (model.usuario.isInicio()) {
+
+            %>
+            <li><a><%= model.usuario.getNombre()%></a></li>
+                    <%            } else {
+                    %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
-            
-            
-             
-        </ul>
-
-    <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
-
-    <sql:query var="lol" dataSource="${LADB}">
-        SELECT * FROM A.ARTICULO FETCH FIRST 7 ROWS ONLY
-    </sql:query>
+                <%                }
+                %>
 
 
-    <div class="contenido">
-        <ul>
-
-            <c:forEach var="nispe" items="${lol.rows}">
-                <form  action="el_arti">
-                    <li > 
-                        <img src="${nispe.img}" alt="" height="100" width="70"  />
-                        <div class="bottom">${nispe.nombres}</div>
-                        <input type="submit"  style=" background-color: #ffffff" value="ver" />
-                        <input type="hidden" name="nombre" value="${nispe.nombres}" />
-                        <input type="hidden" name="img" value="${nispe.img}" />
-                        <input type="hidden" name="descripcion" value="${nispe.descripcion}" />
-                        <input type="hidden" name="precio" value="${nispe.precio}" />
-                        <input type="hidden" name="id" value="${nispe.id}" />
-                    </li>
-                </form>
-            </c:forEach>
 
         </ul>
-    </div>   
-</body>
+
+        <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
+
+        <sql:query var="lol" dataSource="${LADB}">
+            SELECT * FROM A.ARTICULO FETCH FIRST 7 ROWS ONLY
+        </sql:query>
+
+
+        <div class="contenido">
+            <ul>
+
+                <c:forEach var="nispe" items="${lol.rows}">
+                    <form  action="el_arti">
+                        <li > 
+                            <img src="${nispe.img}" alt="" height="100" width="70"  />
+                            <div class="bottom">${nispe.nombres}</div>
+                            <input type="submit"  style=" background-color: #ffffff" value="ver" />
+                            <input type="hidden" name="nombre" value="${nispe.nombres}" />
+                            <input type="hidden" name="img" value="${nispe.img}" />
+                            <input type="hidden" name="descripcion" value="${nispe.descripcion}" />
+                            <input type="hidden" name="precio" value="${nispe.precio}" />
+                            <input type="hidden" name="id" value="${nispe.id}" />
+                        </li>
+                    </form>
+                </c:forEach>
+
+            </ul>
+        </div>   
+    </body>
 </html>

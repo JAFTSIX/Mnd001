@@ -29,6 +29,17 @@
         <servlet-name>el_arti</servlet-name>
         <url-pattern>/el_arti</url-pattern>
     </servlet-mapping>
+    
+   <mime-mapping>
+        <extension>body</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    
+   <mime-mapping>
+        <extension>jsp</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    
     <session-config>
         <session-timeout>
             30

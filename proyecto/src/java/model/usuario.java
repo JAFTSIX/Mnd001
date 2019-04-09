@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.inject.Named;
 
 /**
@@ -14,7 +14,7 @@ import javax.inject.Named;
  * @author Usuario
  */
 @Named(value = "usu")
-@Stateless
+@Stateful
 public class usuario implements Serializable {
 
     static boolean inicio = false;

@@ -19,6 +19,7 @@ public class controlador_user {
                 if (pass.equals(data.getString(1))) {
                     usuario.setPass(pass);
                     usuario.setUsername(username);
+                    usuario.setInicio(true);
                     completa_datos(data.getString(2));
                     consulta.close();
                     data.close();
@@ -34,10 +35,13 @@ public class controlador_user {
 
     public static void completa_datos(String id_cliente) {
         try {
+            System.out.println("lleeeeeega");
             Statement consulta = conexion.getConexion().createStatement();
-            ResultSet data = consulta.executeQuery("select nombre from A.Cliente where nombre='" + id_cliente + "'");
+            ResultSet data = consulta.executeQuery("SELECT NOMBRE FROM A.CLIENTE WHERE ID_CLIENTE='"+id_cliente+"'");
             if (data.next()) {
+                System.out.println(""+data.getString(1));
                 usuario.setNombre(data.getString(1));
+
                 consulta.close();
                 data.close();
             }
