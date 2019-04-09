@@ -8,15 +8,20 @@ import model.conexion;
 import model.usuario;
 
 public class controlador_user {
-     public static boolean valida(String username,String pass) {
 
-         try {
+    public static boolean valida(String username, String pass) {
+
+        try {
             Statement consulta = conexion.getConexion().createStatement();
-            ResultSet data = consulta.executeQuery("select PASS from A.USERS where USER='" + username + "'");
+            ResultSet data = consulta.executeQuery("select PASS,ID_CLIENTE from A.CUENTA where USERNAME='" + username + "'");
             if (data.next()) {
-                System.out.println("entra a data next");
-                System.out.println("uno" + data.getString(1) + "dos" );
+
                 if (pass.equals(data.getString(1))) {
+                    usuario.setPass(pass);
+                    usuario.setUsername(username);
+                    completa_datos(data.getString(2));
+                    consulta.close();
+                    data.close();
                     return true;
                 }
             }
@@ -27,11 +32,22 @@ public class controlador_user {
         return false;
     }
 
-     public void completa_datos(){
-     
-     }
-     
-     /*
+    public static void completa_datos(String id_cliente) {
+        try {
+            Statement consulta = conexion.getConexion().createStatement();
+            ResultSet data = consulta.executeQuery("select nombre from A.Cliente where nombre='" + id_cliente + "'");
+            if (data.next()) {
+                usuario.setNombre(data.getString(1));
+                consulta.close();
+                data.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("ERROR NO COMUNICATION");
+        }
+
+    }
+
+    /*
      public static int registrar(usuario s) {
      
      try {

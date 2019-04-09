@@ -8,6 +8,7 @@ package controller;
 import static controller.controlador_user.valida;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import model.usuario;
 
 /**
  *
@@ -24,7 +25,6 @@ public class inicio_log {
     
     public String validar() {
         if (valida(user,pass)) {
-            
         return "A2.jsp";
         }else{
         return "faces/inicio_login";

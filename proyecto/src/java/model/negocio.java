@@ -16,7 +16,7 @@ import javax.inject.Named;
 @Stateless
 public class negocio {
 
-
+ static boolean inicio = false;
     public negocio() {
     }
     

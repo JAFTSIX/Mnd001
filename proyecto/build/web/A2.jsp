@@ -4,8 +4,7 @@
     Author     : Usuario
 --%>
 
-<%@page import="model.usuario"%>
-<%@page import="model.negocio"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
@@ -24,7 +23,7 @@
             <li><a class="activo" href="index_anterior.xhtml">Inicio</a></li>
             <li><a href="#nuevo">Nuevo</a></li>
 
-            <li class="drop"><a href="producto.xhtml"><span>Productos</span></a>
+            <li class="drop"><a><span>Productos</span></a>
                 <ul class="submenu">
                     <li><a href="#categoria1">Categoria 1</a></li>
                     <li><a href="#categoria2">Categoria 2</a></li>
@@ -34,12 +33,15 @@
  
             <li><a href="#carrito">Carrito</a></li>
             <li><a href="#SobreNosotros">Sobre nosotros</a></li>
-            <c:if test="${usuario.inicio}">
-            <li><%= usuario.getNombre() %></li>
-            </c:if>
-            <c:if test="${usuario.inicio==false}">
+            <% boolean x =model.usuario.isInicio(); %>
+            <c:if test="${model.usuario.isInicio()}"/>
+            <li><%= model.usuario.getNombre() %></li>
+         
+            <c:if test="${x eq false}"/>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
-            </c:if>
+            
+            
+             
         </ul>
 
     <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
