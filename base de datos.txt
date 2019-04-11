@@ -1,6 +1,6 @@
 //(CREA UNA BASE DE DATOS LLAMADA='a' USER='a' PASSWORD='a' )
 ******inserta todo esto en la db*************
-
+create table articulo(
 id varchar(10) primary key,
 
 nombres varchar(50),

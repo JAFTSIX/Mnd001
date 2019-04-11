@@ -17,6 +17,10 @@
         <servlet-name>el_arti</servlet-name>
         <servlet-class>controller.el_arti</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>controller.logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -29,17 +33,18 @@
         <servlet-name>el_arti</servlet-name>
         <url-pattern>/el_arti</url-pattern>
     </servlet-mapping>
-    
-   <mime-mapping>
+    <mime-mapping>
         <extension>body</extension>
         <mime-type>text/html</mime-type>
     </mime-mapping>
-    
-   <mime-mapping>
+    <mime-mapping>
         <extension>jsp</extension>
         <mime-type>text/html</mime-type>
     </mime-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

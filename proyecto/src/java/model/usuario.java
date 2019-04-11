@@ -22,8 +22,8 @@ public class usuario implements Serializable {
     static String id;
     static String nombre="";
     static String pass;
-    static String username;
-    static String cuenta_bancaria;
+    static String username; 
+    static String cuenta_bancaria="";
     static String correo;
 
     public usuario() {

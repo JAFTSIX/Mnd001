@@ -36,14 +36,15 @@
 
 
             <%
-
                 if (model.usuario.isInicio()) {
-
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
-                    <%            } else {
-                    %>
+            <li id="logout"><form action="logout"> <input type="submit" value="logout"/></form></li>
+
+            <%            } else {
+            %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
+            <li><a href="faces/registrarse.xhtml">registrarse</a></li>
                 <%                }
                 %>
 
