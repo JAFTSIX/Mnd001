@@ -25,7 +25,7 @@
         </ul><!--> barra de navegacion<-->
 
         <div class="selec">
-            <!--<button class="borrar" onclick="agregar('prueba', '12', '250000', 'imagenes/ej.jpg')">X</button>-->
+            <button class="borrar" onclick="agregar('prueba', '12', '250000', 'imagenes/ej.jpg')">X</button>
             <div class="resumen">
                 <div class="top">Resumen:<hr/></div>
                 <table id="carrito">
@@ -38,32 +38,32 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Art</td>
-                            <td>1</td>
-                            <td>₡9999.99</td>
+                            <td class="artNombre">Art</td>
+                            <td class="artCant">1</td>
+                            <td class="artPrecio">₡100.0</td>
                             <td class="borrar"><button class="borrar" onclick="borrar(this, 'art1')">X</button></td>
                         </tr>
                         <tr>
-                            <td>art2</td>
-                            <td>3</td>
-                            <td>₡9999.99</td>
+                            <td class="artNombre">Art2</td>
+                            <td class="artCant">3</td>
+                            <td class="artPrecio">₡100.0</td>
                             <td class="borrar"><button class="borrar" onclick="borrar(this, 'art2')">X</button></td>
                         </tr>
                         <tr>
-                            <td>art3</td>
-                            <td>3</td>
-                            <td>₡9999.99</td>
+                            <td class="artNombre">Art3</td>
+                            <td class="artCant">3</td>
+                            <td class="artPrecio">₡100.5</td>
                             <td class="borrar"><button class="borrar" onclick="borrar(this, 'art3')">X</button></td>
                         </tr>
                         <tr>
-                            <td>art4</td>
-                            <td>3</td>
-                            <td>₡9999.99</td>
+                            <td class="artNombre">Art4</td>
+                            <td class="artCant">4</td>
+                            <td class="artPrecio">₡100.5</td>
                             <td class="borrar"><button class="borrar" onclick="borrar(this, 'art4')">X</button></td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="bottom"><hr/>Total: ₡9999.99</div>
+                <div class="bottom" id="precio"></div>
             </div>
 
             <ol id="articulos">
@@ -102,13 +102,16 @@
                 var cell2 = newRow.insertCell(1);
                 var cell3 = newRow.insertCell(2);
                 var cell4 = newRow.insertCell(3);
-                
+
                 //Añadir en tabla
                 var elem = document.getElementById("articulos");
-                
+
                 cell1.innerHTML = art;
+                cell1.setAttribute("class", "artNombre");
                 cell2.innerHTML = cant;
+                cell2.setAttribute("class", "artCant");
                 cell3.innerHTML = "₡" + precio;
+                cell3.setAttribute("class", "artPrecio");
 
                 cell4.setAttribute("class", "borrar");
                 var node = document.createElement("button");
@@ -117,20 +120,11 @@
                 node.innerHTML = "X";
                 cell4.appendChild(node);
                 //Añadir en tabla
-                
-                
+
+
                 //Añadir en lista de imagenes
-                /*var imgArticulo = document.createElement("li");
-                var imgLink = document.createElement("a");
-                imgLink.setAttribute("href", imgId);
-                var img = document.createElement("img");
-                var creaId = "art" + i;
-                img.setAttribute("id", creaId);
-                img.setAttribute("src", "imagenes/ej.jpg");
-                imgLink.appendChild(img);
-                imgArticulo.appendChild(imgLink);*/
                 var nodo0 = document.createElement("li");
-                nodo0.setAttribute("id","art" + i);
+                nodo0.setAttribute("id", "art" + i);
                 var nodo1 = document.createElement("a");
                 nodo1.setAttribute("href", "articulo.xhtml");
                 var nodo2 = document.createElement("img");
@@ -139,7 +133,7 @@
                 nodo0.appendChild(nodo1);
                 elem.appendChild(nodo0);
                 //Añadir en lista de imagenes
-                
+                getTotal();
                 console.log(i);
             }
 
@@ -157,8 +151,30 @@
                     }
                 }
                 //]]>
+                getTotal();
                 console.log(i);
             }
+
+            function getTotal() {
+                var precio = document.getElementsByClassName("artPrecio");
+                var total = 0.0;
+                //<![CDATA[
+                for (var j = 0; j < precio.length; j++) {
+                    var valor = precio[j].innerHTML;
+                    var res = (parseFloat(valor.substr(1)));
+                    total = total + res;
+                }
+                //]]>
+                console.log("total: " + total);
+                var doc = document.getElementById("precio");
+                doc.innerHTML = "";
+                var hzRule = document.createElement('hr');
+                var format = document.createTextNode("Total: ₡" + total);
+                doc.appendChild(hzRule);
+                doc.appendChild(format);
+            }
+            //asdasdasd
+            window.onload = getTotal();
         </script>
     </h:body>
 </html>

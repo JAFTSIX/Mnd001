@@ -1,8 +1,12 @@
 //(CREA UNA BASE DE DATOS LLAMADA='a' USER='a' PASSWORD='a' )
+<<<<<<< HEAD
 ******inserta todo esto en la db*************
+=======
+******inserta todo esto en la db*************/
+
+>>>>>>> 4cc41a4d305258c9b6f41143bf9d0562f2371427
 create table articulo(
 id varchar(10) primary key,
-
 nombres varchar(50),
 img varchar(300),
 descripcion varchar(1000),
