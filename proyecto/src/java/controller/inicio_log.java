@@ -8,7 +8,6 @@ package controller;
 import static controller.controlador_user.valida;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import model.usuario;
 
 /**
  *
@@ -18,18 +17,23 @@ import model.usuario;
 @RequestScoped
 public class inicio_log {
 
-    String user;
-    String pass;
     String id;
     String nombre = "";
     String apellido = "";
-    String cuenta_bancaria = "";
     String correo;
-    
+    String user;
+
+    String pass;
+    String pass2;
+
     /////cuenta
-    
+    String numero_cuenta;
+
     /////dirección
-    
+    String direccion;
+    String ciudad;
+    String cod_postal;
+    String pais;
 
     public inicio_log() {
     }
@@ -44,7 +48,9 @@ public class inicio_log {
     }
 
     public String registrar() {
-        if (valida(user, pass)) {
+
+        int i = controlador_user.registrar_db(user, pass, pass2, id, nombre, apellido, correo, numero_cuenta, direccion, pais, ciudad, cod_postal);
+        if (i == 1) {
             return "A2.jsp";
         } else {
             return "faces/registrarse";
@@ -86,15 +92,6 @@ public class inicio_log {
         this.nombre = nombre;
     }
 
-   
-    public String getCuenta_bancaria() {
-        return cuenta_bancaria;
-    }
-
-    public void setCuenta_bancaria(String cuenta_bancaria) {
-        this.cuenta_bancaria = cuenta_bancaria;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -103,8 +100,6 @@ public class inicio_log {
         this.correo = correo;
     }
 
-//</editor-fold>
-
     public String getApellido() {
         return apellido;
     }
@@ -112,5 +107,54 @@ public class inicio_log {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
+    public String getNumero_cuenta() {
+        return numero_cuenta;
+    }
+
+    public void setNumero_cuenta(String numero_cuenta) {
+        this.numero_cuenta = numero_cuenta;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getPass2() {
+        return pass2;
+    }
+
+    public void setPass2(String pass2) {
+        this.pass2 = pass2;
+    }
+
+    public String getCod_postal() {
+        return cod_postal;
+    }
+
+    public void setCod_postal(String cod_postal) {
+        this.cod_postal = cod_postal;
+    }
+
+//</editor-fold>
 }

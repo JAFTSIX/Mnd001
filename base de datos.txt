@@ -35,42 +35,15 @@ INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio)
 SELECT * FROM A.ARTICULO FETCH FIRST 10 ROWS ONLY;
 
 create table cliente(
-
-
 id_cliente varchar(10) primary key,
 nombre varchar(50),
 apellido varchar(50)
 );
 
-create table cuenta(
-
-
-id_cliente varchar(10) ,
-id varchar(10) primary key,
-username varchar(50),
-pass varchar(300),
-correo varchar(1000),
- constraint  fkc_id foreign key(id_CLIENTE) 
-REFERENCES CLIENTE(id_CLIENTE)
-
-);
-
-create table tarjeta(
-
-id_cliente varchar(10) ,
-id varchar(10) primary key,
-username varchar(50),
-pass varchar(300),
-correo varchar(1000),
-
-CONSTRAINT FKT_CLIENTE FOREIGN KEY (id_CLIENTE) 
-REFERENCES CLIENTE(id_CLIENTE)
-);
 
 
 INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
 	VALUES ('c1', 'JUAN', 'VINAGRE')
-
 INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
 	VALUES ('c2', 'MARIA', 'VINAGRE');
 INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
@@ -80,15 +53,52 @@ INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO)
 INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
 	VALUES ('c5', 'JOSUKE', 'HIGASHIKATA');
 
+create table cuenta(
 
 
-INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
-	VALUES ('c1', 'CN1', 'JUANXXX', '1', 'ASJD@GMAIL.COM');
-INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
-	VALUES ('c2', 'CN2', 'J', '1', 'ASJD@GMAIL.COM');
+id_cliente varchar(10) NOT NULL,
+username varchar(50),
+pass varchar(300),
+correo varchar(1000),
+CUENTA varchar(30),
+ constraint  fkc_id foreign key(id_CLIENTE) 
+REFERENCES CLIENTE(id_CLIENTE)
 
-INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
-	VALUES ('c3', 'CN3', 'A', '1', 'ASJD@GMAIL.COM');
+);
+alter table  A.CUENTA add primary key(id_cliente);
 
-INSERT INTO A.CUENTA (ID_CLIENTE, ID, USERNAME, PASS, CORREO) 
-	VALUES ('c4', 'CN4', 'B', '1', 'ASJD@GMAIL.COM');
+
+INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
+	VALUES ('c1',  'JUANXXX', '1', 'ASJD@GMAIL.COM','2');
+INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
+	VALUES ('c2',  'J', '1', 'ASJD@GMAIL.COM','2');
+
+INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
+	VALUES ('c3', 'A', '1', 'ASJD@GMAIL.COM','2');
+
+INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
+	VALUES ('c4',  'B', '1', 'ASJD@GMAIL.COM','2');
+
+
+
+create table direccion(
+
+id_cliente varchar(10) NOT NULL,
+direccion varchar(300),
+pais varchar(30),
+codigoPostal varchar(1000),
+CIUDAD VARCHAR(30),
+ constraint  fkd_id foreign key(id_CLIENTE) 
+REFERENCES CLIENTE(id_CLIENTE)
+
+);
+
+INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
+	VALUES ('c2', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
+INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
+	VALUES ('c3', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
+INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
+	VALUES ('c4', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
+INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
+	VALUES ('c5', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
+

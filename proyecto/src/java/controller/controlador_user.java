@@ -37,9 +37,9 @@ public class controlador_user {
         try {
             System.out.println("lleeeeeega");
             Statement consulta = conexion.getConexion().createStatement();
-            ResultSet data = consulta.executeQuery("SELECT NOMBRE FROM A.CLIENTE WHERE ID_CLIENTE='"+id_cliente+"'");
+            ResultSet data = consulta.executeQuery("SELECT NOMBRE FROM A.CLIENTE WHERE ID_CLIENTE='" + id_cliente + "'");
             if (data.next()) {
-                System.out.println(""+data.getString(1));
+                System.out.println("" + data.getString(1));
                 usuario.setNombre(data.getString(1));
 
                 consulta.close();
@@ -51,42 +51,82 @@ public class controlador_user {
 
     }
 
-    /*
-     public static int registrar(usuario s) {
-     
-     try {
-     Statement consulta = conexion.getConexion().createStatement();
-     ResultSet data = consulta.executeQuery("select ID from PROF.USUARIOS where ID='" + s.getId() + "'");
-     if (data.next()) {
-     System.out.println("controlarpersona/registrar/ ENTRA AL DATA NEXT");
-     String h = data.getString(1);
-     if (s.getId().equals(h)) {
-     System.out.println("controlarpersona/registrar/ data.gedtstring " + h);
-     consulta.close();
-     return 0;
-     }
-     }
-     
-     if (s.getId() == null || s.getNombre() == null || s.getPw() == null) {
-     System.out.println("controlarpersona/registrar/ no esta lleno");
-     return 2;
-     } else {
-     System.out.println("controlarpersona/registrar/ ENTRA AL INSERT");
-     PreparedStatement stm = conexion.getConexion().prepareStatement("INSERT INTO PROF.USUARIOS VALUES (?,?,?)");
-     stm.setString(1, s.getId());
-     stm.setString(2, s.getPw());
-     stm.setString(3, s.getNombre());
-     stm.executeUpdate();
-     stm.close();
-     return 1;
-     }
-     
-     } catch (SQLException e) {
-     System.err.println("controlarpersona/registrar/ ERROR NO COMUNICATION"+
-     " "+e);
-     }
-     System.out.println("controlarpersona/registrar/ return 2*-2");
-     return 2;
-     
-     }*/
+    public static int registrar_db(String user, String pass, String pass2, String id,
+            String nombre, String apellido, String correo, String numero_cuenta, String direccion,
+            String pais, String ciudad, String cod_postal) {
+
+        if (pass.equals(pass2)) {
+
+            try {
+                Statement consulta = conexion.getConexion().createStatement();
+                ResultSet data = consulta.executeQuery("select ID_CLIENTE from A.Cliente  where ID_CLIENTE='" + id + "'");
+                if (data.next()) {
+                    System.out.println("controlarpersona/registrar/ ENTRA AL DATA NEXT");
+                    String h = data.getString(1);
+                    if (id.equals(h)) {
+                        System.out.println("controlarpersona/registrar/ data.gedtstring " + h);
+                        consulta.close();
+                        return 0;
+                    }
+                }
+                
+                Statement consulta2 = conexion.getConexion().createStatement();
+                ResultSet data2 = consulta.executeQuery("select username from A.CUENTA  where username='" + user + "'");
+                if (data2.next()) {
+                    System.out.println("controlarpersona/registrar/ ENTRA AL DATA NEXT*");
+                    String h = data2.getString(1);
+                    if (id.equals(h)) {
+                        System.out.println("controlarpersona/registrar/ data.gedtstring* " + h);
+                        consulta2.close();
+                        return 0;
+                    }
+                }
+
+                if (id.equals("") || nombre.equals("") || apellido.equals("") || pass.equals("")
+                        || correo.equals("") || user.equals("") || numero_cuenta.equals("")
+                        || cod_postal.equals("") || pais.equals("") || ciudad.equals("") || direccion.equals("")) {
+                    System.out.println("controlarpersona/registrar/ no esta lleno");
+                    return 2;
+
+                } else {
+
+                    System.out.println("/registrar/ ENTRA AL INSERT");
+                    try (PreparedStatement stm = conexion.getConexion().prepareStatement("INSERT INTO A.Cliente VALUES (?,?,?)")) {
+                        stm.setString(1, id);
+                        stm.setString(2, nombre);
+                        stm.setString(3, apellido);
+                        stm.executeUpdate();
+                    }
+
+                    try (PreparedStatement stm2 = conexion.getConexion().prepareStatement("INSERT INTO A.CUENTA VALUES (?, ?, ?, ?,?)")) {
+                        stm2.setString(1, id);
+                        stm2.setString(2, user);
+                        stm2.setString(3, pass);
+                        stm2.setString(4, correo);
+                        stm2.setString(5, numero_cuenta);
+                        stm2.executeUpdate();
+                    }
+                    try (PreparedStatement stm3 = conexion.getConexion().prepareStatement("INSERT INTO A.DIRECCION VALUES (?,?,?,?,?)")) {
+                        stm3.setString(1, id);
+                        stm3.setString(2, direccion);
+                        stm3.setString(3, pais);
+                        stm3.setString(4, cod_postal);
+                        stm3.setString(5, ciudad);
+                        stm3.executeUpdate();
+                    }
+
+                    return 1;
+                }
+
+            } catch (SQLException e) {
+                System.err.println("controlarpersona/registrar/ ERROR NO COMUNICATION"
+                        + "\n" + e);
+            }
+
+        }
+        System.out.println("controlarpersona/registrar/ return 2*-2");
+        return 2;
+
+    }
+
 }

@@ -32,7 +32,7 @@ public class logout extends HttpServlet {
             throws ServletException, IOException {
 
         usuario.setInicio(false);
-        usuario.setCorreo("");
+        usuario.setCorreo_electronico("");
         usuario.setCuenta_bancaria("");
         usuario.setId("");
         usuario.setNombre("");

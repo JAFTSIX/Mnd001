@@ -20,11 +20,18 @@ public class usuario implements Serializable {
     static boolean inicio = false;
 
     static String id;
-    static String nombre="";
+    static String nombre = "";
     static String pass;
-    static String username; 
-    static String cuenta_bancaria="";
-    static String correo;
+    static String username;
+    static String cuenta_bancaria = "";
+    static String correo_electronico;
+
+    /////dirección
+    static String direccion;
+    static String ciudad;
+    static String pais;
+    static String cod_postal;
+    static String postal;
 
     public usuario() {
     }
@@ -77,14 +84,52 @@ public class usuario implements Serializable {
         usuario.cuenta_bancaria = cuenta_bancaria;
     }
 
-    public static String getCorreo() {
-        return correo;
+    public static String getCorreo_electronico() {
+        return correo_electronico;
     }
 
-    public static void setCorreo(String correo) {
-        usuario.correo = correo;
+    public static void setCorreo_electronico(String correo_electronico) {
+        usuario.correo_electronico = correo_electronico;
     }
 
-   
+    public static String getDireccion() {
+        return direccion;
+    }
+
+    public static void setDireccion(String direccion) {
+        usuario.direccion = direccion;
+    }
+
+    public static String getCiudad() {
+        return ciudad;
+    }
+
+    public static void setCiudad(String ciudad) {
+        usuario.ciudad = ciudad;
+    }
+
+    public static String getPais() {
+        return pais;
+    }
+
+    public static void setPais(String pais) {
+        usuario.pais = pais;
+    }
+
+    public static String getCod_postal() {
+        return cod_postal;
+    }
+
+    public static void setCod_postal(String cod_postal) {
+        usuario.cod_postal = cod_postal;
+    }
+
+    public static String getPostal() {
+        return postal;
+    }
+
+    public static void setPostal(String postal) {
+        usuario.postal = postal;
+    }
 
 }

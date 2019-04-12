@@ -1,19 +1,17 @@
 <%-- 
-    Document   : A2
-    Created on : 07-abr-2019, 21:00:40
+    Document   : cat_1
+    Created on : 11-abr-2019, 14:19:34
     Author     : Usuario
 --%>
-
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-
 <!DOCTYPE html>
 <html>
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
-
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
@@ -55,7 +53,7 @@
         <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
         <sql:query var="lol" dataSource="${LADB}">
-            SELECT * FROM A.ARTICULO FETCH FIRST 7 ROWS ONLY
+            SELECT * FROM A.ARTICULO where tipo='T2'
         </sql:query>
 
 
@@ -79,5 +77,6 @@
 
             </ul>
         </div>   
+
     </body>
 </html>
