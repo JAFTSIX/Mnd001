@@ -29,15 +29,12 @@ public class el_arti extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           String nombre=request.getParameter("nombre");
+        String id=request.getParameter("no_articulo");
+        String nombre=request.getParameter("nombre");
         String img=request.getParameter("img");
-        String descripcion=request.getParameter("descripcion");
-        String precio=request.getParameter("precio");
-        String id=request.getParameter("id");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA"+id);
         
-     request.setAttribute(precio,precio);
-     request.setAttribute(descripcion,descripcion);
+     request.setAttribute(id, id);
      request.setAttribute(img, img);
      request.setAttribute(nombre,nombre);
         request.getRequestDispatcher("faces/el_articulo.jsp").forward(request, response);

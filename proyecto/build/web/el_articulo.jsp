@@ -7,6 +7,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -21,21 +22,32 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <title>JSP Page</title>
-    
+
         </head>
         <body>
-    
-                    <%
-                   String nombre=request.getParameter("nombre");
-        String img=request.getParameter("img");
-        String descripcion=request.getParameter("descripcion");
-        String precio=request.getParameter("precio");
-        String id =request.getParameter("id");
-        
+
+            <%
+                String nombre = request.getParameter("nombre");
+                String img = request.getParameter("img");
+                String id = request.getParameter("no_articulo");
+
             %>
-            
-            <c:if test = "${id}">
-            </c:if>
+
+            <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
+
+
+            <sql:query var="lol" dataSource="${LADB}">
+
+
+
+                SELECT ar.PRECIO  , li.DUENO ,tis.NOMBRE , ar.DESCRIP  , ar.CANT  
+                FROM TB_ARTICULO ar, TB_LICENCIA li, TB_ARTISTA tis
+                where ar.ID_LICENCIA=li.ID_LICENCIA and ar.ID_ARTISTA=tis.ID_ARTISTA and ar.NO_ARTICULO=<%=id%> 
+
+            </sql:query>
+
+
+
             <ul class="navegador">
                 <img src="imagenes/ej.jpg" alt="Logo" title="Logo" id="logo" align="left"/>
                 <li><a href="index_anterior.xhtml">Inicio</a></li>
@@ -53,24 +65,27 @@
                 <li><a href="#SobreNosotros">Sobre nosotros</a></li>
             </ul>
 
-            <div class="selec">
-                <div class="bottom">Item 1</div>
-                <img src="<%=img%>" width="50" height="50"/>
-                <span class="titulo"><%=nombre%>
-                </span><br/><br/><hr/>
 
-                <span class="desc">
-                    <%=descripcion%>
-                </span><br/><br/>
-                <a href="#" class="precio">
-                    ₡<%=precio%>
-                </a>
-                
-                <a href="#" class="boton">Añadir al carrito</a>
+            <c:forEach var="nepe" items="${lol.rows}">
+                <div class="selec">
+                    <div class="bottom">artista:${nepe.nombre}</div>
+                    <img src="<%=img%>" width="50" height="50"/>
+                    <span class="titulo"><%=nombre%>
+                    </span><br/><br/><hr/>
+
+                    <span class="desc">
+                        ${nepe.descrip} <p>
+                            franquicia:${nepe.dueno} 
+                    </span><br/><br/>
+                    <a href="#" class="precio">
+                        $${nepe.precio}
+                    </a>
+
+                    <a href="test" class="boton">Añadir al carrito</a>
 
 
-            </div>
-
+                </div>
+            </c:forEach>
         </body>
     </html>
 </f:view>

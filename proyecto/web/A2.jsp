@@ -15,7 +15,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ejemplo</title>
     </head>
     <body>
         <ul class="navegador"> 
@@ -27,7 +27,7 @@
                 <ul class="submenu">
                     <li><a href="cat_1.jsp">Categoria 1</a></li>
 
-                    <li><a href="cat_1.jsp">Categoria 2</a></li>
+                    <li><a href="cat_2.jsp">Categoria 2</a></li>
                 </ul>
             </li>
 
@@ -40,6 +40,7 @@
             <li><a><%= model.usuario.getNombre()%></a></li>
             <li id="logout"><form action="logout"> <input type="submit" value="logout"/></form></li>
             <li><a href="#carrito">Carrito</a></li>
+            <li><a href="logout">logout</a></li>
 
             <%            } else {
             %>
@@ -55,7 +56,7 @@
         <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
         <sql:query var="lol" dataSource="${LADB}">
-            SELECT * FROM A.ARTICULO FETCH FIRST 7 ROWS ONLY
+            SELECT NO_ARTICULO, NOMBRE,IMG FROM A.TB_ARTICULO FETCH FIRST 10 ROWS ONLY
         </sql:query>
 
 
@@ -66,13 +67,11 @@
                     <form  action="el_arti">
                         <li > 
                             <img src="${nispe.img}" alt="" height="100" width="70"  />
-                            <div class="bottom">${nispe.nombres}</div>
+                            <div class="bottom">${nispe.nombre}</div>
                             <input type="submit"  style=" background-color: #ffffff" value="ver" />
-                            <input type="hidden" name="nombre" value="${nispe.nombres}" />
+                            <input type="hidden" name="no_articulo" value="${nispe.no_articulo}" />
+                            <input type="hidden" name="nombre" value="${nispe.nombre}" />
                             <input type="hidden" name="img" value="${nispe.img}" />
-                            <input type="hidden" name="descripcion" value="${nispe.descripcion}" />
-                            <input type="hidden" name="precio" value="${nispe.precio}" />
-                            <input type="hidden" name="id" value="${nispe.id}" />
                         </li>
                     </form>
                 </c:forEach>
