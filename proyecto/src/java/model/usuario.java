@@ -6,7 +6,9 @@
 package model;
 
 import java.io.Serializable;
-import javax.ejb.Stateful;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.Singleton;
 import javax.inject.Named;
 
 /**
@@ -14,24 +16,24 @@ import javax.inject.Named;
  * @author Usuario
  */
 @Named(value = "usu")
-@Stateful
+@Singleton
 public class usuario implements Serializable {
 
     static boolean inicio = false;
 
-    static String id;
-    static String nombre = "";
-    static String pass;
-    static String username;
-    static String cuenta_bancaria = "";
-    static String correo_electronico;
+    static List<Direccion> direcciones = new ArrayList<>();
+    static String id_Cliente;
 
-    /////dirección
-    static String direccion;
-    static String ciudad;
-    static String pais;
-    static String cod_postal;
-    static String postal;
+    static String nombre;
+    static String correo;
+    static String contra;
+
+    //////////tarjeta
+    static String id_Tarjeta;
+    static String titular;
+    static String no_tarjeta;
+    static String vencimiento;
+    static String cvc;
 
     public usuario() {
     }
@@ -44,12 +46,12 @@ public class usuario implements Serializable {
         usuario.inicio = inicio;
     }
 
-    public static String getId() {
-        return id;
+    public static String getId_Cliente() {
+        return id_Cliente;
     }
 
-    public static void setId(String id) {
-        usuario.id = id;
+    public static void setId_Cliente(String id_Cliente) {
+        usuario.id_Cliente = id_Cliente;
     }
 
     public static String getNombre() {
@@ -60,76 +62,94 @@ public class usuario implements Serializable {
         usuario.nombre = nombre;
     }
 
-    public static String getPass() {
-        return pass;
+    public static String getContra() {
+        return contra;
     }
 
-    public static void setPass(String pass) {
-        usuario.pass = pass;
+    public static void setContra(String contra) {
+        usuario.contra = contra;
     }
 
-    public static String getUsername() {
-        return username;
+    public static String getId_Tarjeta() {
+        return id_Tarjeta;
     }
 
-    public static void setUsername(String username) {
-        usuario.username = username;
+    public static void setId_Tarjeta(String id_Tarjeta) {
+        usuario.id_Tarjeta = id_Tarjeta;
     }
 
-    public static String getCuenta_bancaria() {
-        return cuenta_bancaria;
+    public static String getTitular() {
+        return titular;
     }
 
-    public static void setCuenta_bancaria(String cuenta_bancaria) {
-        usuario.cuenta_bancaria = cuenta_bancaria;
+    public static void setTitular(String titular) {
+        usuario.titular = titular;
     }
 
-    public static String getCorreo_electronico() {
-        return correo_electronico;
+    public static String getNo_tarjeta() {
+        return no_tarjeta;
     }
 
-    public static void setCorreo_electronico(String correo_electronico) {
-        usuario.correo_electronico = correo_electronico;
+    public static void setNo_tarjeta(String no_tarjeta) {
+        usuario.no_tarjeta = no_tarjeta;
     }
 
-    public static String getDireccion() {
-        return direccion;
+    public static String getVencimiento() {
+        return vencimiento;
     }
 
-    public static void setDireccion(String direccion) {
-        usuario.direccion = direccion;
+    public static void setVencimiento(String vencimiento) {
+        usuario.vencimiento = vencimiento;
     }
 
-    public static String getCiudad() {
-        return ciudad;
+    public static String getCvc() {
+        return cvc;
     }
 
-    public static void setCiudad(String ciudad) {
-        usuario.ciudad = ciudad;
+    public static void setCvc(String cvc) {
+        usuario.cvc = cvc;
     }
 
-    public static String getPais() {
-        return pais;
+    public static String getCorreo() {
+        return correo;
     }
 
-    public static void setPais(String pais) {
-        usuario.pais = pais;
+    public static void setCorreo(String correo) {
+        usuario.correo = correo;
     }
 
-    public static String getCod_postal() {
-        return cod_postal;
+    public static List<Direccion> getDirecciones() {
+        return direcciones;
     }
 
-    public static void setCod_postal(String cod_postal) {
-        usuario.cod_postal = cod_postal;
+    public static void setDirecciones(List<Direccion> direcciones) {
+        usuario.direcciones = direcciones;
     }
 
-    public static String getPostal() {
-        return postal;
+    public static String toS () {
+        return ""+direcciones.toString();
+    }
+    public static String tota () {
+        return "id_cliente"+id_Cliente+"/id tarjeta"+id_Tarjeta+"/titular"+titular
+                +"/no_tarjeta"+no_tarjeta
+                +"/vencimiento"+vencimiento
+                +"/cvc"+cvc
+                ;
     }
 
-    public static void setPostal(String postal) {
-        usuario.postal = postal;
+    public static void limpiar() {
+        direcciones = null;
+        id_Cliente= null;
+        nombre= null;
+        correo= null;
+        contra= null;
+        //////////tarjeta
+        id_Tarjeta= null;
+        titular= null;
+        no_tarjeta= null;
+        vencimiento= null;
+        cvc= null;
+
     }
 
 }

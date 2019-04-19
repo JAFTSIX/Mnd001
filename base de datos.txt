@@ -5,100 +5,240 @@
 ******inserta todo esto en la db*************/
 
 >>>>>>> 4cc41a4d305258c9b6f41143bf9d0562f2371427
-create table articulo(
-id varchar(10) primary key,
-nombres varchar(50),
-img varchar(300),
-descripcion varchar(1000),
-tipo varchar(3),
-precio double
+Create table tb_Tarjeta(
+id_Tarjeta INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+titular Varchar(35),
+no_Tarjeta numeric(16),
+vencimiento date,
+CVC numeric(3),
+Constraint pk_id_Tarjeta
+primary key (id_Tarjeta)
 );
 
-Alter table articulo add precio double ;
+INSERT INTO A.TB_TARJETA (TITULAR, NO_TARJETA, VENCIMIENTO, CVC) 
+	VALUES ('BANCO LOS PATOS', 123, '2021-04-16', 789);
+INSERT INTO A.TB_TARJETA ( TITULAR, NO_TARJETA, VENCIMIENTO, CVC) 
+	VALUES ('BANCO LOS PATOS', 123, '2021-04-16', 101);
+INSERT INTO A.TB_TARJETA ( TITULAR, NO_TARJETA, VENCIMIENTO, CVC) 
+	VALUES ( 'BANCO LOS PATOS', 123, '2021-04-16', 112);
+INSERT INTO A.TB_TARJETA ( TITULAR, NO_TARJETA, VENCIMIENTO, CVC) 
+	VALUES ('BANCO LOS PATOS', 123, '2021-04-16', 131);
+INSERT INTO A.TB_TARJETA ( TITULAR, NO_TARJETA, VENCIMIENTO, CVC) 
+	VALUES ('BANCO nacional', 123, '2021-04-16', 141);
 
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A1', 'negro', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A2', 'ITEM 2', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A3', 'ITEM 3', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A4', 'ITEM 4', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A5', 'ITEM 5', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A6', 'ITEM 6', 'img/BLANCO.jpg', 'BLANCO MUY BLANCO CREEME','T2',11000);
-INSERT INTO A.ARTICULO (ID, NOMBRES, IMG, DESCRIPCION, TIPO,precio) 
-	VALUES ('A7', 'ITEM 7', 'img/color-negro.png', 'NEGRO MUY NEGRO CREEME','T1',11000);
-
-
-SELECT * FROM A.ARTICULO FETCH FIRST 10 ROWS ONLY;
-
-create table cliente(
-id_cliente varchar(10) primary key,
-nombre varchar(50),
-apellido varchar(50)
+Create table tb_Cliente (
+id_Cliente INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+correo Varchar(60) ,
+nombre Varchar(10),
+contra Varchar(15),
+id_Tarjeta INTEGER NOT NULL,
+Constraint pk_id_Cliente
+primary key (id_Cliente),
+Constraint fk_tb_Tarjeta
+foreign key (id_Tarjeta) references tb_Tarjeta(id_Tarjeta)
 );
 
+INSERT INTO A.TB_CLIENTE (NOMBRE, CORREO, CONTRA, ID_TARJETA) 
+	VALUES ( 'PDROX', 'A@GMAIL.COM','1', 1);
+INSERT INTO A.TB_CLIENTE (NOMBRE, CORREO, CONTRA, ID_TARJETA) 
+	VALUES ( 'MARIA', 'B@GMAIL.COM','1', 2);
+INSERT INTO A.TB_CLIENTE (NOMBRE, CORREO, CONTRA, ID_TARJETA) 
+	VALUES ( 'JUANA', 'C@GMAIL.COM','1', 3);
+INSERT INTO A.TB_CLIENTE (NOMBRE, CORREO, CONTRA, ID_TARJETA) 
+	VALUES ( 'JOSUKE', 'D@GMAIL.COM','1', 4);
+INSERT INTO A.TB_CLIENTE (NOMBRE, CORREO, CONTRA, ID_TARJETA) 
+	VALUES ( 'JOTARO', 'E@GMAIL.COM','1', 5);
 
 
-INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
-	VALUES ('c1', 'JUAN', 'VINAGRE')
-INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
-	VALUES ('c2', 'MARIA', 'VINAGRE');
-INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
-	VALUES ('c3', 'JOSUE', 'VINAGRE');
-INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
-	VALUES ('c4', 'JONATHAN', 'JOESTAR');
-INSERT INTO A.CLIENTE (ID_CLIENTE, NOMBRE, APELLIDO) 
-	VALUES ('c5', 'JOSUKE', 'HIGASHIKATA');
-
-create table cuenta(
-
-
-id_cliente varchar(10) NOT NULL,
-username varchar(50),
-pass varchar(300),
-correo varchar(1000),
-CUENTA varchar(30),
- constraint  fkc_id foreign key(id_CLIENTE) 
-REFERENCES CLIENTE(id_CLIENTE)
-
-);
-alter table  A.CUENTA add primary key(id_cliente);
-
-
-INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
-	VALUES ('c1',  'JUANXXX', '1', 'ASJD@GMAIL.COM','2');
-INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
-	VALUES ('c2',  'J', '1', 'ASJD@GMAIL.COM','2');
-
-INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
-	VALUES ('c3', 'A', '1', 'ASJD@GMAIL.COM','2');
-
-INSERT INTO A.CUENTA (ID_CLIENTE, USERNAME, PASS, CORREO,NUMERO_TARJETA) 
-	VALUES ('c4',  'B', '1', 'ASJD@GMAIL.COM','2');
-
-
-
-create table direccion(
-
-id_cliente varchar(10) NOT NULL,
-direccion varchar(300),
-pais varchar(30),
-codigoPostal varchar(1000),
-CIUDAD VARCHAR(30),
- constraint  fkd_id foreign key(id_CLIENTE) 
-REFERENCES CLIENTE(id_CLIENTE)
-
+Create table tb_Direccion(
+id_Direccion INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+nombre varchar(10),
+apellido varchar(10),
+direccion varchar(25),
+direccion2 varchar(25),
+ciudad varchar(10),
+pais varchar(20),
+cod_Postal varchar(10),
+telefono varchar(13),
+constraint pk_id_Direccion
+primary key (id_Direccion)
 );
 
-INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
-	VALUES ('c2', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
-INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
-	VALUES ('c3', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
-INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
-	VALUES ('c4', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
-INSERT INTO A.DIRECCION (ID_CLIENTE, DIRECCION, PAIS, CODIGOPOSTAL,CIUDAD) 
-	VALUES ('c5', 'en lomasde por ahi', 'costa rica', '3','SAN JOSE');
+INSERT INTO A.TB_DIRECCION ( NOMBRE, APELLIDO, DIRECCION, DIRECCION2, CIUDAD, PAIS, COD_POSTAL, TELEFONO) 
+	VALUES ('PEDRO', 'RAMIRO', 'POR AHI', 'POR ALLA','DAVID','PANAMA', 'JETBOX1', '22331232');
 
+INSERT INTO A.TB_DIRECCION ( NOMBRE, APELLIDO, DIRECCION, DIRECCION2, CIUDAD, PAIS, COD_POSTAL, TELEFONO) 
+	VALUES ('MARIA', 'SUSANA', 'POR AHI', 'POR ALLA','DAVID','PANAMA', 'C', '22331232');
+
+INSERT INTO A.TB_DIRECCION ( NOMBRE, APELLIDO, DIRECCION, DIRECCION2, CIUDAD, PAIS, COD_POSTAL, TELEFONO) 
+            VALUES ('JUANA', 'KUKO', 'POR AHI', 'POR ALLA','SAN JOSE','COSTA RICA', 'JETBOX2', '22331232');
+
+
+Create table tb_DirecCliente(
+id_Direccion INTEGER NOT NULL,
+id_Cliente INTEGER NOT NULL,
+constraint pk_id_ClienteDirect
+primary key (id_Direccion,id_Cliente),
+constraint fk_id_ClienteD
+foreign key (id_Cliente) references tb_Cliente(id_Cliente),
+constraint fk_id_DireccionD
+foreign key (id_Direccion) references tb_Direccion(id_Direccion)
+);
+
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (1, 1);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (2, 1);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (1, 2);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (3, 3);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (1, 4);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (3, 4);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (2, 5);
+INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) 
+	VALUES (1,5);
+
+
+
+
+
+Create table tb_Licencia(
+id_Licencia INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+dueno varchar(30),
+pais varchar(20),
+telefono numeric(13),
+Correo varchar(30),
+constraint pk_id_Licencia
+primary key (id_Licencia)
+);
+
+INSERT INTO A.TB_LICENCIA (DUENO, PAIS, TELEFONO, CORREO) 
+VALUES ('disney', 'Estados Unidos', 2331231, 'disney@asd.com');
+INSERT INTO A.TB_LICENCIA (DUENO, PAIS, TELEFONO, CORREO) 
+VALUES ('GHOST BUSTERS','Estados Unidos',  23352235, 'GB@asd.com');
+INSERT INTO A.TB_LICENCIA (DUENO, PAIS, TELEFONO, CORREO) 
+VALUES ('REPOIO','Estados Unidos',29911222, 'REPOIO@asd.com');
+INSERT INTO A.TB_LICENCIA (DUENO, PAIS, TELEFONO, CORREO) 
+VALUES ('TEST DUEÑO','TEST COUNTRY',100000, 'TEST');
+
+
+Create table tb_Artista(
+id_Artista INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+nombre varchar(30),
+correo varchar(30),
+telefono numeric(13),
+empresa varchar(30),
+constraint pk_id_Artista
+primary key (id_Artista)
+);
+INSERT INTO A.TB_ARTISTA (NOMBRE, CORREO, TELEFONO, EMPRESA) 
+	VALUES ('Marito', 'artista@correo.com', 1231231, 'empresa.test');
+INSERT INTO A.TB_ARTISTA (NOMBRE, CORREO, TELEFONO, EMPRESA) 
+	VALUES ('carlito', 'artista@correo.com', 1231231, 'empresa.test');
+INSERT INTO A.TB_ARTISTA (NOMBRE, CORREO, TELEFONO, EMPRESA) 
+	VALUES ('chapito', 'artista@correo.com', 1231231, 'empresa.test');
+INSERT INTO A.TB_ARTISTA (NOMBRE, CORREO, TELEFONO, EMPRESA) 
+	VALUES ('pito', 'artista@correo.com', 1231231, 'empresa.test');
+
+Create table tb_Proveedor(
+id_Proveedor INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+nombre varchar(30),
+correo varchar(30),
+telefono numeric(13),
+constraint pk_id_Proveedor
+primary key (id_Proveedor)
+);
+
+INSERT INTO A.TB_PROVEEDOR (NOMBRE, CORREO, TELEFONO) 
+VALUES ('proveedora1', 'sa@correo.com', 123212);
+INSERT INTO A.TB_PROVEEDOR (NOMBRE, CORREO, TELEFONO) 
+VALUES ('proveedora2', 'sa@correo.com', 123212);
+INSERT INTO A.TB_PROVEEDOR (NOMBRE, CORREO, TELEFONO) 
+VALUES ('proveedora3', 'sa@correo.com', 123212);
+INSERT INTO A.TB_PROVEEDOR (NOMBRE, CORREO, TELEFONO) 
+VALUES ('proveedora4', 'sa@correo.com', 123212);
+
+
+Create table tb_Tipo(
+id_Tipo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+nombre varchar(15),
+constraint pk_id_Tipo
+primary key (id_Tipo)
+);
+
+INSERT INTO A.TB_TIPO (NOMBRE) 
+VALUES ('camisa');
+INSERT INTO A.TB_TIPO (NOMBRE) 
+VALUES ('poster');
+INSERT INTO A.TB_TIPO (NOMBRE) 
+VALUES ('estatuilla');
+
+Create table tb_Articulo(
+no_Articulo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+nombre varchar(30),
+id_Tipo INTEGER NOT NULL,
+cant numeric(5),
+precio numeric(5,3),
+Descrip varchar(600),
+img varchar(1000),
+id_Licencia INTEGER NOT NULL,
+id_Artista INTEGER NOT NULL,
+id_Proveedor INTEGER NOT NULL,
+constraint pk_no_Articulo
+primary key (no_Articulo),
+constraint fk_id_Tipo
+foreign key (id_Tipo) references tb_Tipo(id_Tipo),
+constraint fk_id_Licencia
+foreign key (id_Licencia) references tb_Licencia(id_Licencia),
+constraint fk_id_Artista
+foreign key (id_Artista) references tb_Artista(id_Artista),
+constraint fk_id_Proveedor
+foreign key (id_Proveedor) references tb_Proveedor(id_Proveedor)
+);
+
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('camisa negra', 1, 100, 12, 'negro bien negro', 'img/color-negro.png', 1, 1, 1);
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('poster blanco', 2, 100, 12, 'negro bien negro',  'img/BLANCO.jpg', 1, 2, 2);
+
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('camisa negra', 1, 100, 12, 'negro bien negro', 'img/color-negro.png', 2, 1, 1);
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('poster blanco', 2, 100, 12, 'negro bien negro',  'img/BLANCO.jpg', 2, 3, 1);
+
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('camisa negra', 1, 100, 12, 'negro bien negro', 'img/color-negro.png', 1, 2, 3);
+INSERT INTO A.TB_ARTICULO (NOMBRE, ID_TIPO, CANT, PRECIO, DESCRIP, IMG, ID_LICENCIA, ID_ARTISTA, ID_PROVEEDOR) 
+	VALUES ('poster blanco', 2, 100, 12, 'negro bien negro',  'img/BLANCO.jpg', 3, 3, 3);
+
+
+
+
+Create table tb_Encabezado(
+no_Compra INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+fecha date,
+total numeric(7,2),
+id_Cliente INTEGER NOT NULL,
+constraint pk_no_Compra
+primary key (no_Compra),
+constraint fk_id_Cliente
+foreign key (id_Cliente) references tb_Cliente(id_Cliente)
+);
+
+Create table tb_lineaPedido(
+no_Compra INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+no_Articulo INTEGER NOT NULL,
+unidades numeric(3),
+precio_Unidad numeric(5,2),
+precio_Total numeric(7,2),
+constraint pk_id_CompraArticulo
+primary key (no_Compra,no_Articulo),
+constraint fk_no_Compra
+foreign key (no_Compra) references tb_Encabezado(no_Compra),
+constraint fk_no_Articulo
+foreign key (no_Articulo) references tb_Articulo(no_Articulo)
+);

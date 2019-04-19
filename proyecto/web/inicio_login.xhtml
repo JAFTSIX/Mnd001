@@ -14,8 +14,8 @@
             <h:form >
                 
                 <h:panelGrid columns="2" >
-                    <h:outputLabel value="username"/><h:inputText required="true" value="#{inicio_log.user}" size="17"/>   
-                    <h:outputLabel value="password"/><h:inputSecret required="true" value="#{inicio_log.pass}" size="17" />   
+                    <h:outputLabel value="correo"/><h:inputText required="true" value="#{inicio_log.correo}" size="17"/>   
+                    <h:outputLabel value="password"/><h:inputSecret required="true" value="#{inicio_log.contra}" size="17" />   
                     <h:commandButton action="#{inicio_log.validar()}" value="iniciar sesión"/>
                 </h:panelGrid>
             </h:form>

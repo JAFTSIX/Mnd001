@@ -17,13 +17,10 @@
 
                     <h:form >
                         <h:panelGrid columns="2" >
-                            <h:outputLabel value="identificacion"/><h:inputText required="true" value="#{inicio_log.id}" size="17"/>   
-                            <h:outputLabel value="nombre"/><h:inputText required="true" value="#{inicio_log.nombre}" size="17"/>   
-                            <h:outputLabel value="apellido"/><h:inputText required="true" value="#{inicio_log.apellido}" size="17"/>   
-                            <h:outputLabel value="correo"/><h:inputText required="true" value="#{inicio_log.correo}" size="17"/>   
-                            <h:outputLabel value="username"/><h:inputText required="true" value="#{inicio_log.user}" size="17"/>   
-                            <h:outputLabel value="password"/><h:inputSecret required="true" value="#{inicio_log.pass}" size="17" />   
-                            <h:outputLabel value="confirmar pass"/><h:inputSecret required="true" value="#{inicio_log.pass2}" size="17" />   
+                            <h:outputLabel value="nombre"/><h:inputText required="true" value="#{registrarse.nombre}" size="17"/>   
+                            <h:outputLabel value="correo"/><h:inputText required="true" value="#{registrarse.correo}" size="17"/>   
+                            <h:outputLabel value="contraseña"/><h:inputText required="true" value="#{registrarse.contra}" size="17"/>   
+                            <h:outputLabel value="de nuevo la contra"/><h:inputText required="true" value="#{registrarse.contra2}" size="17"/>   
 
 
                         </h:panelGrid>
@@ -31,29 +28,43 @@
 
                             <p:tab title="tarjeta">
                                 <h:panelGrid columns="2" cellpadding="10">
-                                    <h:outputLabel value="#tarjeta"/><h:inputText required="true" value="#{inicio_log.numero_cuenta}" size="17"/>   
+                                    <h:outputLabel value="titular"/><h:inputText required="true" value="#{registrarse.titular}" size="17"/>   
+                                    <h:outputLabel value="# de tarjeta"/><h:inputText required="true" value="#{registrarse.no_tarjeta}" size="17"/>   
+                                    <h:outputLabel value="cvc"/><h:inputText required="true" value="#{registrarse.cvc}" size="17"/>   
+
+                            
+                                     <p:outputLabel for="fechaInicio" value="Fecha vencimiento" />
+                                     <p:calendar id="fechaInicio" value="#{registrarse.vencimiento}"  showOn="button" />    
+
+                                    
+
                                 </h:panelGrid>
                             </p:tab>
 
                             <p:tab title="dirección">
                                 <h:panelGrid columns="2" cellpadding="10">
-                                    <h:outputLabel value="direccion"/><h:inputText required="true" value="#{inicio_log.direccion}" size="17"/> 
-                                    
-                                    <h:outputLabel value="ciudad"/><h:inputText required="true" value="#{inicio_log.ciudad}" size="17"/>   
-                                    
-                                    <h:outputLabel value="codigo postal"/><h:inputText required="true" value="#{inicio_log.cod_postal}" size="17"/>   
-                                     
-                                    <h:outputLabel value="pais "/><p:selectOneMenu  required="true" value="#{inicio_log.pais}">
+                                    <h:outputLabel value="nombre"/><h:inputText required="true" value="#{registrarse.dnombre}" size="17"/> 
+                                    <h:outputLabel value="apellido"/><h:inputText required="true" value="#{registrarse.apellido}" size="17"/> 
+                                    <h:outputLabel value="telefono"/><h:inputText required="true" value="#{registrarse.telefono}" size="17"/> 
+                                    <h:outputLabel value="direccion"/><h:inputText required="true" value="#{registrarse.direccion1}" size="17"/> 
+                                    <h:outputLabel value="direccion"/><h:inputText required="true" value="#{registrarse.direccion2}" size="17"/> 
+
+
+                                    <h:outputLabel value="codigo postal"/><h:inputText required="true" value="#{registrarse.cod_postal}" size="17"/>   
+
+                                    <h:outputLabel value="pais "/><p:selectOneMenu  required="true" value="#{registrarse.pais}">
                                         <f:selectItem itemLabel="costa Rica" itemValue="costa Rica"  />
                                         <f:selectItem itemLabel="nicaragua" itemValue="nicaragua"  />
                                         <f:selectItem itemLabel="panama" itemValue="panama"  />
                                     </p:selectOneMenu>
+                                    <h:outputLabel value="ciudad"/><h:inputText required="true" value="#{registrarse.ciudad}" size="17"/>   
+
                                 </h:panelGrid>
-                               
+
                             </p:tab>
 
                         </p:accordionPanel>
-                        <h:commandButton action="#{inicio_log.registrar()}" value="registrarse"/>
+                        <h:commandButton action="#{registrarse.registrar()}" value="registrarse"/>
 
                     </h:form>
 

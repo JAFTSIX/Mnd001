@@ -48,23 +48,39 @@
 
 
 
-            <ul class="navegador">
-                <img src="imagenes/ej.jpg" alt="Logo" title="Logo" id="logo" align="left"/>
-                <li><a href="index_anterior.xhtml">Inicio</a></li>
-                <li><a href="#nuevo">Nuevo</a></li>
+       <ul class="navegador"> 
+            <img src="imagenes/ej.jpg" alt="Logo" title="Logo" id="logo" align="left"/>
+            <li><a class="activo" href="A2.jsp">Inicio</a></li>
+            <li><a href="#nuevo">Nuevo</a></li>
 
-                <li class="drop"><a class="activo" href="producto.xhtml"><span>Productos</span></a>
-                    <ul class="submenu">
-                        <li><a href="#categoria1">Categoria 1</a></li>
-                        <li><a href="#categoria2">Categoria 2</a></li>
-                        <li><a href="#categoria3">Categoria 3</a></li>
-                    </ul>
-                </li>
+            <li class="drop"><a><span>Productos</span></a>
+                <ul class="submenu">
+                    <li><a href="cat_1.jsp">Categoria 1</a></li>
 
-                <li><a href="#carrito">Carrito</a></li>
-                <li><a href="#SobreNosotros">Sobre nosotros</a></li>
-            </ul>
+                    <li><a href="cat_2.jsp">Categoria 2</a></li>
+                </ul>
+            </li>
 
+            <li><a href="#SobreNosotros">Sobre nosotros</a></li>
+
+
+            <%
+                if (model.usuario.isInicio()) {
+            %>
+            <li><a><%= model.usuario.getNombre()%></a></li>
+            <li><a href="faces/carrito.xhtml">carrito</a></li>
+            <li><a href="logout">logout</a></li>
+            
+            <%            } else {
+            %>
+            <li><a href="faces/inicio_login.xhtml">login</a></li>
+            <li><a href="faces/registrarse.xhtml">registrarse</a></li>
+                <%                }
+                %>
+
+
+
+        </ul>
 
             <c:forEach var="nepe" items="${lol.rows}">
                 <div class="selec">

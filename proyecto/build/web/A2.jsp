@@ -38,10 +38,9 @@
                 if (model.usuario.isInicio()) {
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
-            <li id="logout"><form action="logout"> <input type="submit" value="logout"/></form></li>
-            <li><a href="#carrito">Carrito</a></li>
+            <li><a href="carrito.xhtml">carrito</a></li>
             <li><a href="logout">logout</a></li>
-
+            
             <%            } else {
             %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>

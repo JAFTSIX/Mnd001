@@ -30,15 +30,10 @@ public class logout extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        usuario.limpiar();
         usuario.setInicio(false);
-        usuario.setCorreo_electronico("");
-        usuario.setCuenta_bancaria("");
-        usuario.setId("");
-        usuario.setNombre("");
-        usuario.setPass("");
-        usuario.setUsername("");
-    request.getRequestDispatcher("A2.jsp").forward(request, response);
+
+        request.getRequestDispatcher("A2.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
