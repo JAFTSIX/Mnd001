@@ -99,7 +99,7 @@ ul, ol {
     margin: auto;
     overflow: hidden;
     margin-top: 20px;
-    /*background: aqua;*/  /*quitar*//*Esto se puede quitar o cambiar el color aqua es para pruebas*/
+    background: #666666;  /*quitar*/
 }
 
 .contenido ul{
@@ -108,12 +108,14 @@ ul, ol {
 }
 
 /*la caja*/
-.contenido ul li{
+.contenido li{
     float:left;
     list-style: none;
     width:20%;
     height:auto;
-    background: yellow;/*#d8d8d8*//*Esto es para pruebas pero se puede quitar o cambiar luego*/
+    max-width:  250px;
+    min-width: 170px;
+    background: yellow;/*#d8d8d8*/
     margin :20px 0px 20px 55px; 
     border:2px solid #000;
     box-sizing: border-box;
@@ -124,8 +126,10 @@ ul, ol {
 }
 
 /*Texto del item*/
-.contenido ul li > .bottom{
+.contenido li > .bottom{
     width: 100%;
+    max-width:  250px;
+    min-width: 150px;
     position: relative;
     bottom: 0px;
     line-height: 50px;
@@ -137,12 +141,14 @@ ul, ol {
 }
 
 /*imagen del producto*/
-.contenido ul li img{
+.contenido li img{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     height: auto;
+    max-width:  250px;
+    min-width: 150px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -160,7 +166,7 @@ ul, ol {
 .selec{
     position: absolute;
     width: 80%;
-    height: 55%;
+    min-height: 400px;
     border:2px solid #000;
     box-sizing: border-box;
     margin: auto;
@@ -173,9 +179,8 @@ ul, ol {
 .selec img{
     float: left;
     height: auto;
-    width: 25%;
-    max-width:  250px;
-    min-width: 150px;
+    width: 20%;
+    min-width: 90px;
     margin: 10px;
     border: 2px solid #000;
 }
@@ -217,9 +222,11 @@ ul, ol {
     text-align: center;
 }
 
- hr{
+hr{
+    border: none;
     background-color: #4caf50;
     height: 5px;
+    margin: 0px;
     margin-top: 10px;
 }
 
@@ -231,26 +238,30 @@ ul, ol {
     top: 75%;
     right: 1%;
     color: #4caf50;
-    
+
+}
+
+.selec ol li:hover{
+    opacity: 0.6;
 }
 
 .boton {
-	background-color:#4caf50;
-	border:1px solid #18ab29;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:10px 15px;
-	text-decoration:none;
+    background-color:#4caf50;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:10px 15px;
+    text-decoration:none;
 }
 .boton:hover {
-	background-color:#ababab;
+    background-color:#ababab;
 }
 .boton:active {
-	position:relative;
-	top:1px;
+    position:relative;
+    top:1px;
 }
 
 .selec .boton{
@@ -259,3 +270,76 @@ ul, ol {
     right: 2%;
 }
 
+.bottom hr{
+    margin-top: 0px;
+}
+
+.resumen{
+    position: relative;
+    text-align: center;
+    right: 5%;
+    float: right;
+    list-style: none;
+    width: 25%;
+    min-width: 170px;
+    height: 500px;
+    background: #fff;/*#d8d8d8*/
+    margin :20px 0px 20px 10px; 
+    border:2px solid #000;
+    box-sizing: border-box;
+}
+
+.resumen table{
+    width: 100%;
+}
+
+.resumen table thead{
+    background: #d8d8d8;
+}
+
+.resumen table tbody{
+    height: 40px;
+    border-collapse: collapse;
+    border: #18ab29;
+    border-bottom: 1px solid #000;
+}
+
+.resumen table tbody tr:hover {
+    background-color:#ababab;
+}
+
+.borrar{
+    padding: 0px;
+    background: none;
+    border:none;
+    cursor:pointer;
+    color:#ffffff;
+    font-size:17px;
+    text-decoration:none;
+}
+
+.borrar:active {
+    position:relative;
+    top:1px;
+}
+
+.borrar:hover{
+    background:red;
+    opacity: 20%;
+}
+
+.resumen .bottom{
+    padding: 0px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    position: absolute;
+    bottom: 0%;
+}
+
+.resumen .top{
+    padding: 0px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+}

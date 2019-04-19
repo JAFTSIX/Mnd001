@@ -38,9 +38,9 @@
                 if (model.usuario.isInicio()) {
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
-            <li><a href="carrito.xhtml">carrito</a></li>
+            <li><a href="faces/carrito.xhtml">carrito</a></li>
             <li><a href="logout">logout</a></li>
-            
+
             <%            } else {
             %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
@@ -57,17 +57,17 @@
         <sql:query var="lol" dataSource="${LADB}">
             SELECT NO_ARTICULO, NOMBRE,IMG FROM A.TB_ARTICULO FETCH FIRST 10 ROWS ONLY
         </sql:query>
-
+      
 
         <div class="contenido">
             <ul>
 
                 <c:forEach var="nispe" items="${lol.rows}">
                     <form  action="el_arti">
-                        <li > 
+                        <li style="background-color: #ffffff"> 
                             <img src="${nispe.img}" alt="" height="100" width="70"  />
                             <div class="bottom">${nispe.nombre}</div>
-                            <input type="submit"  style=" background-color: #ffffff" value="ver" />
+                            <input  type="submit"  style=" background-color: #ffffff" value="ver" />
                             <input type="hidden" name="no_articulo" value="${nispe.no_articulo}" />
                             <input type="hidden" name="nombre" value="${nispe.nombre}" />
                             <input type="hidden" name="img" value="${nispe.img}" />

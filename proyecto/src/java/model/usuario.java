@@ -8,22 +8,24 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Singleton;
+import javax.ejb.Stateful;
 import javax.inject.Named;
 
 /**
  *
  * @author Usuario
  */
-@Named(value = "usu")
-@Singleton
-public class usuario implements Serializable {
+@Named(value = "usua")
+@Stateful
+public class usuario  {
 
     static boolean inicio = false;
 
     static List<Direccion> direcciones = new ArrayList<>();
     static String id_Cliente;
 
+    static List<Articulo> articulos = new ArrayList<>();
+    
     static String nombre;
     static String correo;
     static String contra;
@@ -126,9 +128,24 @@ public class usuario implements Serializable {
         usuario.direcciones = direcciones;
     }
 
-    public static String toS () {
+    public static List<Articulo> getArticulos() {
+        return articulos;
+    }
+
+    public static void setArticulos(List<Articulo> articulos) {
+        usuario.articulos = articulos;
+    }
+
+    
+    
+    public static String toD () {
         return ""+direcciones.toString();
     }
+    
+    public static String toA () {
+        return ""+articulos.toString();
+    }
+    
     public static String tota () {
         return "id_cliente"+id_Cliente+"/id tarjeta"+id_Tarjeta+"/titular"+titular
                 +"/no_tarjeta"+no_tarjeta
@@ -143,6 +160,7 @@ public class usuario implements Serializable {
         nombre= null;
         correo= null;
         contra= null;
+        articulos=null;
         //////////tarjeta
         id_Tarjeta= null;
         titular= null;

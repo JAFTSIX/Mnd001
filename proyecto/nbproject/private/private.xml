@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/controller/controlador_user.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/controller/Registrarse.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/web/registrarse.xhtml</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/model/Articulo.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/web/el_articulo.jsp</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/controller/test.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/controller/carrito.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/controller/el_arti.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/src/java/model/usuario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/html_proyectos/ELREPO/proyecto/web/A2.jsp</file>
         </group>
     </open-files>
 </project-private>

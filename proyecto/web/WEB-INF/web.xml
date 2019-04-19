@@ -25,6 +25,10 @@
         <servlet-name>test</servlet-name>
         <servlet-class>controller.test</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>carrito_serv</servlet-name>
+        <servlet-class>controller.carrito_serv</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -52,6 +56,10 @@
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>carrito_serv</servlet-name>
+        <url-pattern>/carrito_serv</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

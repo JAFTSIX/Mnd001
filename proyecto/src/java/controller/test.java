@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Articulo;
+import model.usuario;
 
 /**
  *
@@ -29,18 +31,18 @@ public class test extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet test</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet test at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        if (usuario.isInicio()) {
+
+            usuario.getArticulos().add(new Articulo(request.getParameter("no_articulo"), request.getParameter("nombre"),
+                     request.getParameter("cantidad"), request.getParameter("cant_pedida"),
+                    request.getParameter("precio"), request.getParameter("img")));
+            System.out.println(" ***ARRAY= "+usuario.toA());
+            request.getRequestDispatcher("A2.jsp").forward(request, response);
+
+        } else {
+
+            request.getRequestDispatcher("faces/inicio_login.xhtml").forward(request, response);
         }
     }
 

@@ -5,7 +5,6 @@
  */
 package controller;
 
-import model.negocio;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,14 +29,15 @@ public class el_arti extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id=request.getParameter("no_articulo");
+        System.out.println("*/*/*/*/*/*/*/*/*"+id);
         String nombre=request.getParameter("nombre");
         String img=request.getParameter("img");
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAA"+id);
         
      request.setAttribute(id, id);
      request.setAttribute(img, img);
      request.setAttribute(nombre,nombre);
-        request.getRequestDispatcher("faces/el_articulo.jsp").forward(request, response);
+        request.getRequestDispatcher("el_articulo.jsp").forward(request, response);
+        request.logout();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
