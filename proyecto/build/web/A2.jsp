@@ -38,7 +38,8 @@
                 if (model.usuario.isInicio()) {
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
-            <li><a href="faces/carrito.xhtml">carrito</a></li>
+            <li><a href="carrito.jsp">carrito</a></li>
+            
             <li><a href="logout">logout</a></li>
 
             <%            } else {

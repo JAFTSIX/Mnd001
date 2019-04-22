@@ -5,12 +5,10 @@
  */
 package model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateful;
 import javax.inject.Named;
-
 /**
  *
  * @author Usuario
@@ -169,5 +167,7 @@ public class usuario  {
         cvc= null;
 
     }
+    
+ 
 
 }

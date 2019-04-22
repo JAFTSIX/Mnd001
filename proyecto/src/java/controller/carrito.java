@@ -22,7 +22,9 @@ public class carrito {
     String id_Tarjeta;
     String id_Cliente;
     String nombre;
-   
+    
+    
+    
     /**
      * Creates a new instance of carrito
      */
@@ -59,6 +61,8 @@ public class carrito {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+   
     
     
     
