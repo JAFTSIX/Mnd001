@@ -29,6 +29,10 @@
         <servlet-name>carrito_serv</servlet-name>
         <servlet-class>controller.carrito_serv</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>realizar_compra</servlet-name>
+        <servlet-class>controller.realizar_compra</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -60,6 +64,10 @@
     <servlet-mapping>
         <servlet-name>carrito_serv</servlet-name>
         <url-pattern>/carrito_serv</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>realizar_compra</servlet-name>
+        <url-pattern>/realizar_compra</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
