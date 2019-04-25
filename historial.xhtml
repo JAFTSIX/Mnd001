@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     <h:head>
-        <title>Articulo</title>
+        <title>Producto</title>
     </h:head>
     <h:body>
         <ul class="navegador"> <!--> barra de navegacion<-->
@@ -12,7 +12,7 @@
             <li><a href="index.xhtml">Inicio</a></li>
             <li><a href="#nuevo">Nuevo</a></li>
 
-            <li class="drop"><a class="activo" href="producto.xhtml"><span>Productos</span></a>
+            <li class="drop"><a href="producto.xhtml"><span>Productos</span></a>
                 <ul class="submenu">
                     <li><a href="#categoria1">Categoria 1</a></li>
                     <li><a href="#categoria2">Categoria 2</a></li>
@@ -22,24 +22,11 @@
 
             <li><a href="carrito.xhtml">Carrito</a></li>
             <li><a href="#SobreNosotros">Sobre nosotros</a></li>
-            <li><a href="historial.xhtml">Historial</a></li>
+            <li><a class="activo" href="historial.xhtml">Historial</a></li>
         </ul><!--> barra de navegacion<-->
-
-        <div class="selec">
-                <div class="bottom">Item 1</div>
-                <img src="imagenes/ej.jpg"/>
-                <span class="titulo">Lorem ipsum dolor sit amet
-                </span><br/><br/><hr/>
-                
-                <span class="desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                </span><br/><br/>
-                <a href="#" class="precio">
-                    ₡9999.99
-                </a>
-                <a href="#" class="boton">Añadir al carrito</a>
-                
-                
+        
+        <div class="resumen" style="width: 80%; right: 10%;">
+                <div class="top">Historial:<hr/></div>
         </div>
 
     </h:body>
