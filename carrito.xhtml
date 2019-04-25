@@ -24,6 +24,11 @@
             <li><a href="#SobreNosotros">Sobre nosotros</a></li>
         </ul><!--> barra de navegacion<-->
 
+        <div class="alerta" id="compra">
+            <span class="closebtn" onclick="cerrar()">&times;</span>  
+            <strong>¡Compra Completada!</strong> Se ha completado su compra con exito.
+        </div>
+
         <div class="selec">
             <button class="borrar" onclick="agregar('prueba', '12', '250000', 'imagenes/ej.jpg')">X</button>
             <div class="resumen">
@@ -64,7 +69,7 @@
                     </tbody>
                 </table>
                 <div class="bottom" id="precio"></div>
-                <a href="#" class="boton" style="right: 0px; bottom: 50px;">comprar</a>
+                <a href="#" class="boton" onclick="comprar()" style="right: 0px; bottom: 50px;">Comprar</a>
             </div>
 
             <ol id="articulos">
@@ -135,7 +140,7 @@
                 elem.appendChild(nodo0);
                 //Añadir en lista de imagenes
                 getTotal();
-                console.log(i);
+                console.log("articulos: " + i);
             }
 
             function borrar(x, artId) {
@@ -153,7 +158,7 @@
                 }
                 //]]>
                 getTotal();
-                console.log(i);
+                console.log("articulos:" + i);
             }
 
             function getTotal() {
@@ -174,7 +179,45 @@
                 doc.appendChild(hzRule);
                 doc.appendChild(format);
             }
-            //asdasdasd
+
+            function comprar() {
+                var popup = document.getElementById("compra");
+                var prod = document.getElementById("articulos");
+                popup.style.display = "block";
+                popup.style.opacity = "1";
+
+                //<![CDATA[
+                //borrar items de la lista
+                var tabla = document.getElementById("carrito");
+                console.log(tabla);
+                for (var k = tabla.rows.length - 1; k > 0; k--) {
+                    document.getElementById("carrito").deleteRow(k);
+                }
+                //]]>
+                //borrar imagenes de articulos
+                prod.innerHTML = "";
+                console.log("articulos: " + i);
+                i = 0;
+                getTotal();
+            }
+
+            function cerrar() {
+                var close = document.getElementsByClassName("closebtn");
+                var i;
+                //<![CDATA[
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick =
+                            function () {
+                                var div = this.parentElement;
+                                div.style.opacity = "0";
+                                setTimeout(function () {
+                                    div.style.display = "none";
+                                }, 600);
+                            };
+                }
+                //]]>
+            }
+
             window.onload = getTotal();
         </script>
     </h:body>
