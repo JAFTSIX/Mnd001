@@ -39,7 +39,7 @@
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
             <li><a href="carrito.jsp">carrito</a></li>
-            
+            <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
 
             <%            } else {
@@ -58,7 +58,7 @@
         <sql:query var="lol" dataSource="${LADB}">
             SELECT NO_ARTICULO, NOMBRE,IMG FROM A.TB_ARTICULO FETCH FIRST 10 ROWS ONLY
         </sql:query>
-      
+
 
         <div class="contenido">
             <ul>

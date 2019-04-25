@@ -43,6 +43,7 @@
 
             <li><a><%= model.usuario.getNombre()%></a></li>
             <li><a href="carrito.jsp">carrito</a></li>
+            <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
 
         </ul>
@@ -246,7 +247,7 @@
             function actualizar_sheison() {
                 sheison = JSON.stringify(articulos);
 
-               document.form.json.value=sheison; 
+                document.form.json.value = sheison;
                 //compra_art.setAttribute("value", "" + sheison);
 
                 console.log("articulos  " + articulos);

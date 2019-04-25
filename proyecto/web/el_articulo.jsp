@@ -69,6 +69,7 @@
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
             <li><a href="carrito.jsp">carrito</a></li>
+            <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
 
             <%            } else {
