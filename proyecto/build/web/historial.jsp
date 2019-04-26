@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : carrito
     Created on : 22-abr-2019, 0:26:44
@@ -49,29 +50,14 @@
         </ul>
 
 
+
+
         <div class="selec">
 
-            <div class="resumen">
+            <div class="caja_hi">
+
                 <div class="top">compras:<hr/></div>
-                <table id="carrito">
-                    <thead>
-                        <tr>
-                            <td>fecha</td>
-                            <td>Precio</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="artNombre">Art</td>
-                            <td class="artCant">1</td>
-                        </tr>
-
-
-                    </tbody>
-                </table>
-
-
-                <table class="egt">
+                <table id="historia" >
 
                     <caption>historial de compras</caption>
 
@@ -79,33 +65,58 @@
 
                         <tr>
 
-                            <th>Elemento</th>
+                            <th></th>
 
-                            <th>Descripción</th>
+                            <th>Información</th>
 
-                        </tr>
+                        </tr>   
 
                     </thead>
+                    <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
-                    <tbody>
 
-                        <tr>
+                    <sql:query var="encabezados" dataSource="${LADB}">
+                        select EN.NO_COMPRA ,EN.TOTAL,EN.FECHA
+                        from TB_CLIENTE CL,TB_ENCABEZADO EN
+                        WHERE CL.ID_CLIENTE=EN.ID_CLIENTE AND CL.ID_CLIENTE=<%= model.usuario.getId_Cliente()%>
 
-                            <th colspan="2" scope="rowgroup">El elemento raíz</th>
+                    </sql:query>
 
-                        </tr>
+                    <c:forEach var="enca" items="${encabezados.rows}">
+                        <tbody>     
 
-                        <tr>
+                            <tr>
 
-                            <td>html</td>
+                                <th colspan="2" scope="rowgroup"> total: ${enca.total}           fecha:${enca.fecha} </th>
 
-                            <td>Es el contenedor para todos los elementos de un documento</td>
+                            </tr>
+                            <sql:query var="lineas" dataSource="${LADB}">
+                                select AR.NOMBRE,LI.UNIDADES,LI.PRECIO_UNIDAD,LI.PRECIO_TOTAL
+                                from TB_ENCABEZADO EN,TB_LINEAPEDIDO LI,TB_ARTICULO AR
+                                WHERE LI.NO_ARTICULO=AR.NO_ARTICULO AND LI.NO_COMPRA =EN.NO_COMPRA AND EN.NO_COMPRA=${enca.no_compra}
 
-                        </tr>
+                            </sql:query>
 
-                    </tbody>
+                            <c:forEach var="linea" items="${lineas.rows}">
+                                <tr>
+                                    <th>nombre</th>
+                                    <th>unidades</th>
+                                    <th>precio por unidad</th>
+                                    <th>precio total</th>
+                                </tr>  
+                                <tr>
 
-                   
+                                    <td>${linea.nombre}</td>
+                                    <td>  ${linea.unidades}</td>
+                                    <td>${linea.precio_unidad}</td>
+                                    <td>${linea.precio_total}</td>
+
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </c:forEach>
+
+
             </div>
 
 

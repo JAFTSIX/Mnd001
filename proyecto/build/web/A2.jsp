@@ -6,8 +6,8 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
 <!DOCTYPE html>
 <html>
@@ -55,7 +55,7 @@
 
         <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
-        <sql:query var="lol" dataSource="${LADB}">
+            <sql:query var="lol" dataSource="${LADB}">
             SELECT NO_ARTICULO, NOMBRE,IMG FROM A.TB_ARTICULO FETCH FIRST 10 ROWS ONLY
         </sql:query>
 
