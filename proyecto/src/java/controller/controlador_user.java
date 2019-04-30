@@ -146,7 +146,7 @@ public class controlador_user {
             data = consulta.executeQuery("SELECT ID_DIRECCION from TB_DIRECCION where COD_POSTAL='" + direccion.getCod_postal() + "'");
 
             if (data.next()) {
-                
+
                 System.out.println("******* LA DIRECCION EXISTE OPCION 1");
                 id_direccion = data.getString(1);//////***************
 
@@ -289,6 +289,7 @@ public class controlador_user {
                 consulta.close();
             }
 
+            usuario.getDirecciones().add(direccion);
             return 1;
 
         } catch (SQLException e) {
@@ -297,6 +298,50 @@ public class controlador_user {
         }
 
         System.out.println("controlarpersona/registrar/ return 2*-2");
+        return 2;
+    }
+
+    static int registra_dir(Direccion direccion) {
+
+        try {
+
+            Statement consulta = conexion.getConexion().createStatement();
+            //INSERTA DIRECCION
+            try (PreparedStatement stm = conexion.getConexion().prepareStatement("INSERT INTO A.TB_DIRECCION"
+                    + " ( NOMBRE, APELLIDO, DIRECCION, DIRECCION2, CIUDAD, PAIS, COD_POSTAL, TELEFONO) \n"
+                    + "            VALUES (?,?,?,?,?,?,?,?)")) {
+                stm.setString(1, direccion.getNombre());
+                stm.setString(2, direccion.getApellido());
+                stm.setString(3, direccion.getDireccion());
+                stm.setString(4, direccion.getDireccion2());
+                stm.setString(5, direccion.getCiudad());
+                stm.setString(6, direccion.getPais());
+                stm.setString(7, direccion.getCod_postal());
+                stm.setString(8, direccion.getTelefono());
+                stm.executeUpdate();
+            }
+
+            String id_direccion;
+            //busco elid direccion
+            ResultSet data = consulta.executeQuery("SELECT ID_DIRECCION from TB_DIRECCION where COD_POSTAL='" + direccion.getCod_postal() + "'");
+            if (data.next()) {
+                id_direccion = data.getString(1);
+
+                try (PreparedStatement stm = conexion.getConexion().prepareStatement("INSERT INTO A.TB_DIRECCLIENTE (ID_DIRECCION, ID_CLIENTE) \n"
+                        + "	VALUES (?,?)")) {
+                    stm.setInt(1, Integer.parseInt(id_direccion));
+                    stm.setInt(2, Integer.parseInt(usuario.getId_Cliente()));
+                    stm.executeUpdate();
+                }
+                data.close();
+                consulta.close();
+                usuario.getDirecciones().add(direccion);
+                return 1;
+            }
+
+        } catch (SQLException e) {
+        }
+
         return 2;
     }
 

@@ -6,8 +6,8 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
 <!DOCTYPE html>
 <html>
@@ -43,9 +43,8 @@
             <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
             <li><a href="faces/direccion_anadir.xhtml">añadir direccion</a></li>
-            
-            <%            } else {
-            %>
+                <%            } else {
+                %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
             <li><a href="faces/registrarse.xhtml">registrarse</a></li>
                 <%                }
@@ -57,8 +56,8 @@
 
         <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
-            <sql:query var="lol" dataSource="${LADB}">
-            SELECT NO_ARTICULO, NOMBRE,IMG FROM A.TB_ARTICULO FETCH FIRST 10 ROWS ONLY
+        <sql:query var="lol" dataSource="${LADB}">
+            select ar.NO_ARTICULO,ar.NOMBRE,ar.IMG from TB_ARTICULO ar,TB_TIPO ti where ti.ID_TIPO=ar.ID_TIPO and ti.NOMBRE='estatuilla' 
         </sql:query>
 
 

@@ -6,10 +6,10 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,9 +42,12 @@ public class test extends HttpServlet {
 
         if (usuario.isInicio()) {
 
-            usuario.getArticulos().add(new Articulo(request.getParameter("no_articulo"), request.getParameter("nombre"),
+           
+ Articulo d=new Articulo(request.getParameter("no_articulo"), request.getParameter("nombre"),
                     request.getParameter("cantidad"), request.getParameter("cant_pedida"),
-                    request.getParameter("precio"), request.getParameter("img")));
+                    request.getParameter("precio"), request.getParameter("img"));
+            
+ usuario.getArticulos().add(d);
 
             List<Articulo> articulos = usuario.getArticulos();
 

@@ -45,12 +45,11 @@
             <li><a href="carrito.jsp">carrito</a></li>
             <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
-
+            <li><a href="faces/direccion_anadir.xhtml">añadir direccion</a></li>
         </ul>
 
 
         <div class="selec">
-            <button class="borrar" onclick="agregar('prueba', '12', '250', 'imagenes/ej.jpg', '1')">X</button>
             <div class="resumen">
                 <div class="top">Resumen:<hr/></div>
                 <table id="carrito">

@@ -25,9 +25,10 @@
 
             <li class="drop"><a><span>Productos</span></a>
                 <ul class="submenu">
-                    <li><a href="cat_1.jsp">Categoria 1</a></li>
+                    <li><a href="categoria_1.jsp">posters</a></li>
 
-                    <li><a href="cat_2.jsp">Categoria 2</a></li>
+                    <li><a href="categoria_2.jsp">camisas</a></li>
+                    <li><a href="categoria_3.jsp">estatuillas</a></li>
                 </ul>
             </li>
 
@@ -41,7 +42,8 @@
             <li><a href="carrito.jsp">carrito</a></li>
             <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
-
+            <li><a href="faces/direccion_anadir.xhtml">añadir direccion</a></li>
+            
             <%            } else {
             %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>

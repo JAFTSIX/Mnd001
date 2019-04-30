@@ -1,19 +1,21 @@
 <%-- 
-    Document   : cat_1
-    Created on : 11-abr-2019, 14:19:34
+    Document   : A2
+    Created on : 07-abr-2019, 21:00:40
     Author     : Usuario
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
 <!DOCTYPE html>
 <html>
-      <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+    <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+
     <head>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ejemplo</title>
     </head>
     <body>
         <ul class="navegador"> 
@@ -23,9 +25,10 @@
 
             <li class="drop"><a><span>Productos</span></a>
                 <ul class="submenu">
-                    <li><a href="cat_1.jsp">Categoria 1</a></li>
+                    <li><a href="categoria_1.jsp">posters</a></li>
 
-                    <li><a href="cat_1.jsp">Categoria 2</a></li>
+                    <li><a href="categoria_2.jsp">camisas</a></li>
+                    <li><a href="categoria_3.jsp">estatuillas</a></li>
                 </ul>
             </li>
 
@@ -36,11 +39,12 @@
                 if (model.usuario.isInicio()) {
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>
-            <li id="logout"><form action="logout"> <input type="submit" value="logout"/></form></li>
-            <li><a href="#carrito">Carrito</a></li>
-
-            <%            } else {
-            %>
+            <li><a href="carrito.jsp">carrito</a></li>
+            <li><a href="historial.jsp">historial</a></li>            
+            <li><a href="logout">logout</a></li>
+            <li><a href="faces/direccion_anadir.xhtml">añadir direccion</a></li>
+                <%            } else {
+                %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
             <li><a href="faces/registrarse.xhtml">registrarse</a></li>
                 <%                }
@@ -53,7 +57,7 @@
         <sql:setDataSource var="LADB" url="jdbc:derby://localhost:1527/a"  driver="org.apache.derby.jdbc.ClientDriver" user="a" password="a" />
 
         <sql:query var="lol" dataSource="${LADB}">
-            SELECT * FROM A.ARTICULO where tipo='T1'
+            select ar.NO_ARTICULO,ar.NOMBRE,ar.IMG from TB_ARTICULO ar,TB_TIPO ti where ti.ID_TIPO=ar.ID_TIPO and ti.NOMBRE='poster' 
         </sql:query>
 
 
@@ -62,21 +66,18 @@
 
                 <c:forEach var="nispe" items="${lol.rows}">
                     <form  action="el_arti">
-                        <li > 
+                        <li style="background-color: #ffffff"> 
                             <img src="${nispe.img}" alt="" height="100" width="70"  />
-                            <div class="bottom">${nispe.nombres}</div>
-                            <input type="submit"  style=" background-color: #ffffff" value="ver" />
-                            <input type="hidden" name="nombre" value="${nispe.nombres}" />
+                            <div class="bottom">${nispe.nombre}</div>
+                            <input  type="submit"  style=" background-color: #ffffff" value="ver" />
+                            <input type="hidden" name="no_articulo" value="${nispe.no_articulo}" />
+                            <input type="hidden" name="nombre" value="${nispe.nombre}" />
                             <input type="hidden" name="img" value="${nispe.img}" />
-                            <input type="hidden" name="descripcion" value="${nispe.descripcion}" />
-                            <input type="hidden" name="precio" value="${nispe.precio}" />
-                            <input type="hidden" name="id" value="${nispe.id}" />
                         </li>
                     </form>
                 </c:forEach>
 
             </ul>
         </div>   
-        
     </body>
 </html>

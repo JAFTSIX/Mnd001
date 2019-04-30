@@ -153,12 +153,12 @@ public class usuario  {
     }
 
     public static void limpiar() {
-        direcciones = null;
+        direcciones.clear();
         id_Cliente= null;
         nombre= null;
         correo= null;
         contra= null;
-        articulos=null;
+        articulos.clear();
         //////////tarjeta
         id_Tarjeta= null;
         titular= null;

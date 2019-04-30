@@ -58,6 +58,18 @@ public class Registrarse implements Serializable {
         }
 
     }
+    
+    public String anadir_direccion() {
+
+        Direccion direccion = new Direccion(id_direccion, Dnombre, apellido, direccion1, direccion2, ciudad, pais, cod_postal, telefono);
+        int i = controlador_user.registra_dir(direccion);
+        if (i == 1) {
+            return "A2.jsp";
+        } else {
+            return "faces/direccion_anadir";
+        }
+
+    }
 
     public String getId_direccion() {
         return id_direccion;

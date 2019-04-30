@@ -71,9 +71,9 @@
             <li><a href="carrito.jsp">carrito</a></li>
             <li><a href="historial.jsp">historial</a></li>            
             <li><a href="logout">logout</a></li>
-
-            <%            } else {
-            %>
+            <li><a href="faces/direccion_anadir.xhtml">añadir direccion</a></li>
+                <%            } else {
+                %>
             <li><a href="faces/inicio_login.xhtml">login</a></li>
             <li><a href="faces/registrarse.xhtml">registrarse</a></li>
                 <%                }
