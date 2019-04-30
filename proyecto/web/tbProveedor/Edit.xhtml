@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbProveedorEditDlg" widgetVar="TbProveedorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbProveedorTitle}">
+            <h:form id="TbProveedorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbProveedorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbProveedorLabel_idProveedor}" for="idProveedor" />
+                        <p:inputText id="idProveedor" value="#{tbProveedorController.selected.idProveedor}" title="#{bundle.EditTbProveedorTitle_idProveedor}" required="true" requiredMessage="#{bundle.EditTbProveedorRequiredMessage_idProveedor}"/>
+                        <p:outputLabel value="#{bundle.EditTbProveedorLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{tbProveedorController.selected.nombre}" title="#{bundle.EditTbProveedorTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditTbProveedorLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{tbProveedorController.selected.correo}" title="#{bundle.EditTbProveedorTitle_correo}" />
+                        <p:outputLabel value="#{bundle.EditTbProveedorLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{tbProveedorController.selected.telefono}" title="#{bundle.EditTbProveedorTitle_telefono}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbProveedorController.update}" value="#{bundle.Save}" update="display,:TbProveedorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbProveedorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbProveedorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

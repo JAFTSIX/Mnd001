@@ -77,4 +77,11 @@
     <welcome-file-list>
         <welcome-file>A2.jsp</welcome-file>
     </welcome-file-list>
+    <resource-ref>
+        <description>jdbc:derby://localhost:1527/a</description>
+        <res-ref-name>a</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

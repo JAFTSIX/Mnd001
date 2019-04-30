@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbProveedorViewDlg" widgetVar="TbProveedorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTbProveedorTitle}">
+            <h:form id="TbProveedorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbProveedorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTbProveedorLabel_idProveedor}"/>
+                        <h:outputText value="#{tbProveedorController.selected.idProveedor}" title="#{bundle.ViewTbProveedorTitle_idProveedor}"/>
+                        <h:outputText value="#{bundle.ViewTbProveedorLabel_nombre}"/>
+                        <h:outputText value="#{tbProveedorController.selected.nombre}" title="#{bundle.ViewTbProveedorTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewTbProveedorLabel_correo}"/>
+                        <h:outputText value="#{tbProveedorController.selected.correo}" title="#{bundle.ViewTbProveedorTitle_correo}"/>
+                        <h:outputText value="#{bundle.ViewTbProveedorLabel_telefono}"/>
+                        <h:outputText value="#{tbProveedorController.selected.telefono}" title="#{bundle.ViewTbProveedorTitle_telefono}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TbProveedorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

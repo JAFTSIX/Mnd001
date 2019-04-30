@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="CLIENTE FRECUENTE"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form>
+                <h:outputLabel style="color: red" value=" Ingrese las fecha en formato **YYYY-MM-DD**"/>
+                <h:panelGrid columns="3" >
+                <h:outputLabel value="Fecha de inicio"/><h:inputText value="#{conectConsultas.fecha1}"/><h:panelGroup/> 
+                <h:outputLabel value="Fecha final"/><h:inputText value="#{conectConsultas.fecha2}"/>
+                <h:commandButton action="#{conectConsultas.consulta1}" value="Consultar"/>
+                </h:panelGrid>
+            </h:form> 
+            <h:form id="TbTipoListForm">
+                <p:panel header="CLIENTES FRECUENTES">
+                    <p:dataTable id="datalist" value="#{conectConsultas.primerConsulta}" var="item"
+                                 selectionMode="single" selection="#{tbTipoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50">
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="NOMBRE"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="TOTAL"/>
+                            </f:facet>
+                            <h:outputText value="#{item.total}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="CANTIDAD"/>
+                            </f:facet>
+                            <h:outputText value="#{item.totalCompra}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+            <pre style="font-size: 15px" >
+                                               Select C.id_Cliente, nombre, sum(total) totalComprado, count(E.id_Cliente) cantidadCompras 
+                                               from tb_Encabezado E, tb_Cliente C 
+                                               Where E.id_Cliente=C.id_Cliente and fecha between  'fecha1' and 'fecha2' 
+                                               group by C.id_Cliente, nombre 
+                                               having sum(total)>1</pre>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
