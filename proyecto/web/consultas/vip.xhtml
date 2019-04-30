@@ -16,7 +16,7 @@
         <ui:define name="body">
             <h:form>
                 <h:outputLabel style="color: red" value=" Ingrese las fecha en formato **YYYY-MM-DD**"/>
-                <h:panelGrid columns="3">
+                <h:panelGrid columns="3" >
                 <h:outputLabel value="Fecha de inicio"/><h:inputText value="#{conectConsultas.fecha1}"/><h:panelGroup/> 
                 <h:outputLabel value="Fecha final"/><h:inputText value="#{conectConsultas.fecha2}"/>
                 <h:commandButton action="#{conectConsultas.consulta1}" value="Consultar"/>
@@ -59,6 +59,12 @@
                     </p:dataTable>
                 </p:panel>
             </h:form>
+            <pre style="font-size: 15px" >
+                                               Select C.id_Cliente, nombre, sum(total) totalComprado, count(E.id_Cliente) cantidadCompras 
+                                               from tb_Encabezado E, tb_Cliente C 
+                                               Where E.id_Cliente=C.id_Cliente and fecha between  'fecha1' and 'fecha2' 
+                                               group by C.id_Cliente, nombre 
+                                               having sum(total)>1</pre>
         </ui:define>
     </ui:composition>
 

@@ -10,12 +10,12 @@
 
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListTbTipoTitle}"></h:outputText>
+            <h:outputText value="TIPOS"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
             <h:form id="TbTipoListForm">
-                <p:panel header="#{bundle.ListTbTipoTitle}">
+                <p:panel header="TIPOS DE ARTICULOS">
                     <p:dataTable id="datalist" value="#{tbTipoController.items}" var="item"
                                  selectionMode="single" selection="#{tbTipoController.selected}"
                                  paginator="true"
@@ -27,13 +27,13 @@
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column filterBy="#{item.idTipo}">
+                        <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTbTipoTitle_idTipo}"/>
+                                <h:outputText value="ID"/>
                             </f:facet>
                             <h:outputText value="#{item.idTipo}"/>
                         </p:column>
-                        <p:column filterBy="#{item.nombre}">
+                        <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListTbTipoTitle_nombre}"/>
                             </f:facet>

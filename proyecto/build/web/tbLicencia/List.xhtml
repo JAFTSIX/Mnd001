@@ -10,12 +10,12 @@
 
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListTbLicenciaTitle}"></h:outputText>
+            <h:outputText value="LICENCIAS"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
             <h:form id="TbLicenciaListForm">
-                <p:panel header="#{bundle.ListTbLicenciaTitle}">
+                <p:panel header="LICENCIAS">
                     <p:dataTable id="datalist" value="#{tbLicenciaController.items}" var="item"
                                  selectionMode="single" selection="#{tbLicenciaController.selected}"
                                  paginator="true"
@@ -29,13 +29,13 @@
 
                         <p:column filterBy="#{item.idLicencia}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTbLicenciaTitle_idLicencia}"/>
+                                <h:outputText value="ID"/>
                             </f:facet>
                             <h:outputText value="#{item.idLicencia}"/>
                         </p:column>
                         <p:column filterBy="#{item.dueno}">
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListTbLicenciaTitle_dueno}"/>
+                                <h:outputText value="Compañía"/>
                             </f:facet>
                             <h:outputText value="#{item.dueno}"/>
                         </p:column>
