@@ -86,7 +86,7 @@
 
         <script>
 
-            var sheison = '<%=controller.lista.getJSONBRO()%>';
+            var sheison = '<%=request.getParameter("jeison")%>';
             var articulos;
 
             function cargar() {

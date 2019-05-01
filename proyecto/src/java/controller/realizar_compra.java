@@ -68,7 +68,7 @@ public class realizar_compra extends HttpServlet {
             }
             
             if (registrar_compra.registra(articulos)==1) {
-                model.usuario.setArticulos(null);
+                model.usuario.getArticulos().clear();
             request.getRequestDispatcher("A2.jsp").forward(request, response);    
             }else{
              request.getRequestDispatcher("carrito.jsp").forward(request, response);    

@@ -67,8 +67,8 @@ public class test extends HttpServlet {
                 //pasamos el string al json que se traducira
             }
                 lista.setJSONBRO(artilucos.toString());
-            System.out.println("el sheison " + artilucos.toString());
-            System.out.println(" ***ARRAY= " + usuario.toA());
+            //System.out.println("el sheison " + artilucos.toString());
+            //System.out.println(" ***ARRAY= " + usuario.toA());
             request.getRequestDispatcher("A2.jsp").forward(request, response);
 
         } else {
