@@ -29,7 +29,6 @@ public class el_arti extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id=request.getParameter("no_articulo");
-        System.out.println("*/*/*/*/*/*/*/*/*"+id);
         String nombre=request.getParameter("nombre");
         String img=request.getParameter("img");
         

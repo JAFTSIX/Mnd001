@@ -33,6 +33,10 @@
         <servlet-name>realizar_compra</servlet-name>
         <servlet-class>controller.realizar_compra</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>actualizar_lista</servlet-name>
+        <servlet-class>controller.actualizar_lista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -68,6 +72,10 @@
     <servlet-mapping>
         <servlet-name>realizar_compra</servlet-name>
         <url-pattern>/realizar_compra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>actualizar_lista</servlet-name>
+        <url-pattern>/actualizar_lista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

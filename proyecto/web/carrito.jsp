@@ -52,18 +52,24 @@
         <div class="selec">
             <div class="resumen">
                 <div class="top">Resumen:<hr/></div>
-                <table id="carrito">
-                    <thead>
-                        <tr>
-                            <td>Articulo</td>
-                            <td>cant.</td>
-                            <td>Precio</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <form id="actualizar" name="actualizar" action="actualizar_compra">
 
-                    </tbody>
-                </table>
+                    <table id="carrito">
+
+
+                        <thead>
+                            <tr>
+                                <td>Articulo</td>
+                                <td>cant.</td>
+                                <td>Precio</td>
+                            </tr>
+                        </thead>
+                        <input id="json1"  type="hidden" name="json1" value=""/>
+
+                        <tbody>
+                        </tbody>
+                    </table>
+                </form>
 
                 <form id="form" name="form" action="realizar_compra">
                     <div class="bottom" id="precio"></div>
@@ -74,10 +80,9 @@
                         </c:forEach>
                     </select>
                     <input id="json"  type="hidden" name="json" value=""/>
-                    <input class="boton" style="right: 0px; bottom: 50px;" type="submit" name="" value="comprar" />
+                    <input class="boton" style="right: 0px; bottom: 50px;" type="submit" value="comprar" />
                 </form>
             </div>
-
             <ol id="articulos">
 
 
@@ -86,8 +91,12 @@
 
         <script>
 
-            var sheison = '<%=request.getParameter("jeison")%>';
+            var sheison = '<%=controller.lista.getJSONBRO()%>';
+
             var articulos;
+
+
+           
 
             function cargar() {
 
@@ -103,10 +112,11 @@
 
             }
 
-            var i = 0;
+            var cantidad_articulos = 0;
             function agregar(art, cant, precio, imgSource, no_articulo) {
+                //var form = document.getElementById('actualizar');
 
-                i++;
+                cantidad_articulos++;
                 //trae la tabla
                 var tabla = document.getElementById('carrito');
                 //fila tiene las filas de la tabla
@@ -117,7 +127,8 @@
 
                 //crea una fila 
                 var newRow = document.getElementById('carrito').insertRow(numFilas);
-                //incerta una celda vacia
+
+//incerta una celda vacia
                 //articulo
                 var cell1 = newRow.insertCell(0);
                 //cantidad
@@ -150,16 +161,33 @@
                 cell4.setAttribute("class", "borrar");
 
                 //creo boton
-                var node = document.createElement("button");
-                //ponemos clase al boton
-                node.setAttribute("class", "borrar");
-                //le ponemos el evento
-                node.setAttribute("onclick", "borrar(this,'art" + i + "','" + no_articulo + "')");
-                //insertamos X para eliminar        
-                node.innerHTML = "X";
-                //mete el boton en la celda 4
-                cell4.appendChild(node);
+                //creo boton
+                var boton_x = document.createElement("input");
+                //
+                boton_x.setAttribute("type", "submit");
+                boton_x.setAttribute("class", "borrar");
+                boton_x.setAttribute("onclick", "borrar(this,'art" + cantidad_articulos + "','" + no_articulo + "');");
+                boton_x.setAttribute("value", "X");
+
+                //<form id="form" name="form" action="realizar_compra">
+                var from_x = document.createElement("form");
+                from_x.setAttribute("action", "actualizar_lista");
+
+                //<input id="json1"  type="hidden" name="json1" value=""/>CREO ESTE
+                var hidden = document.createElement("input");
+                hidden.setAttribute("id", "json" + cantidad_articulos);
+                hidden.setAttribute("name", "json" + cantidad_articulos);
+                hidden.setAttribute("type", "hidden");
+
+                from_x.appendChild(boton_x);
+                from_x.appendChild(hidden);
+                //mete el form en la celda 4
+
+                cell4.appendChild(from_x);
                 //Añadir en tabla
+
+
+
 
                 //trae los elementos de articulos
                 var elem = document.getElementById("articulos");
@@ -168,7 +196,7 @@
                 //crea una etiqueta li
                 var nodo0 = document.createElement("li");
                 //le ponemos el id a la lista li
-                nodo0.setAttribute("id", "art" + i);
+                nodo0.setAttribute("id", "art" + cantidad_articulos);
 
                 //crea una etiqueta a
                 var nodo1 = document.createElement("a");
@@ -187,7 +215,7 @@
                 //Añadir en lista de imagenes
 
                 getTotal();
-                console.log(i);
+                console.log(cantidad_articulos);
             }
 
             function borrar(x, artId, no_arti) {
@@ -226,14 +254,18 @@
 
             function getTotal() {
                 var precio = document.getElementsByClassName("artPrecio");
+                var cantidad = document.getElementsByClassName("artCant");
                 var total = 0.0;
                 //<![CDATA[
                 for (var j = 0; j < precio.length; j++) {
                     var valor = precio[j].innerHTML;
+                    var can = cantidad[j].innerHTML;
                     var res = (parseFloat(valor.substr(1)));
+                    var CINER = (parseFloat(can));
+                    res = res * CINER;
                     total = total + res;
                 }
-                //]]>
+
                 console.log("total: " + total);
                 var doc = document.getElementById("precio");
                 doc.innerHTML = "";
@@ -242,17 +274,28 @@
                 doc.appendChild(hzRule);
                 doc.appendChild(format);
             }
-            //asdasdasd
+
             function actualizar_sheison() {
                 sheison = JSON.stringify(articulos);
 
                 document.form.json.value = sheison;
+                for (var x = 0; x <= cantidad_articulos; x++) {
+                    if (x>0) {
+                        var i_de = "json" + x;
+                        var elhiden = document.getElementById(i_de);
+                        elhiden.setAttribute("value", sheison);
+                    }
+
+                }
+
                 //compra_art.setAttribute("value", "" + sheison);
 
                 console.log("articulos  " + articulos);
                 console.log("sheison  " + sheison);
 
             }
+
+
             window.onload = getTotal();
             window.onload = cargar();
 
