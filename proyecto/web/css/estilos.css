@@ -112,7 +112,7 @@ ul, ol {
     float:left;
     list-style: none;
     width:20%;
-    height:auto;
+    height:320px;
     max-width:  250px;
     min-width: 170px;
     background: yellow;/*#d8d8d8*/
@@ -146,7 +146,7 @@ ul, ol {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    height: auto;
+    height: 77%;
     max-width:  250px;
     min-width: 150px;
 }

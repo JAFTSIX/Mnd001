@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TbLicenciaEditDlg" widgetVar="TbLicenciaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTbLicenciaTitle}">
+            <h:form id="TbLicenciaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tbLicenciaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTbLicenciaLabel_idLicencia}" for="idLicencia" />
+                        <p:inputText id="idLicencia" value="#{tbLicenciaController.selected.idLicencia}" title="#{bundle.EditTbLicenciaTitle_idLicencia}" required="true" requiredMessage="#{bundle.EditTbLicenciaRequiredMessage_idLicencia}"/>
+                        <p:outputLabel value="#{bundle.EditTbLicenciaLabel_dueno}" for="dueno" />
+                        <p:inputText id="dueno" value="#{tbLicenciaController.selected.dueno}" title="#{bundle.EditTbLicenciaTitle_dueno}" />
+                        <p:outputLabel value="#{bundle.EditTbLicenciaLabel_pais}" for="pais" />
+                        <p:inputText id="pais" value="#{tbLicenciaController.selected.pais}" title="#{bundle.EditTbLicenciaTitle_pais}" />
+                        <p:outputLabel value="#{bundle.EditTbLicenciaLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{tbLicenciaController.selected.telefono}" title="#{bundle.EditTbLicenciaTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.EditTbLicenciaLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{tbLicenciaController.selected.correo}" title="#{bundle.EditTbLicenciaTitle_correo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tbLicenciaController.update}" value="#{bundle.Save}" update="display,:TbLicenciaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TbLicenciaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TbLicenciaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

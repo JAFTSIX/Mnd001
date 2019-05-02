@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000" />
+
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+                <h:form id="menuForm">
+                    <p:menubar>
+                        <p:menuitem value="#{bundle.Home}" outcome="/A2.jsp" icon="ui-icon-home"/>
+                        <p:submenu label="CRUD" icon="ui-icon-play">
+                            <p:menuitem value="CRUD Articulo" outcome="/tbArticulo/List.xhtml" />
+                            <p:menuitem value="CRUD Artista" action="/tbArtista/List.xhtml" />
+                            <p:menuitem value="CURD Licencia" outcome="/tbLicencia/List.xhtml" />
+                            <p:menuitem value="CRUD Proveedor" outcome="/tbProveedor/List.xhtml" />
+                            <p:menuitem value="CRUD Tipo" outcome="/tbTipo/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Consultas" icon="ui-icon-script">
+                            <p:menuitem value="Cliente VIP" outcome="/consultas/vip.xhtml" />
+                            <p:menuitem value="Articulos" action="#{conectConsultas.consulta2()}"/>
+                            <p:menuitem value="Articulos de Artistas" action="#{conectConsultas.consulta3()}" />
+                            <p:menuitem value="Articulos Agotados" action="#{conectConsultas.consulta4()}" />
+                            <p:menuitem value="Articulos por precio" outcome="/consultas/filtro.xhtml" />
+                            <p:menuitem value="Descuentos" outcome="/consultas/descuentos.xhtml" />
+                            <p:menuitem value="Direcciones" action="#{conectConsultas.consulta7()}" />
+                            <p:menuitem value="Promedio Licencia" action="#{conectConsultas.consulta8()}"/>
+                            <p:menuitem value="Lineas" action="#{conectConsultas.consulta8()}"/>
+                        </p:submenu>
+                        <p:submenu label="Diagramas" icon="ui-icon-folder-open">
+                            <p:menuitem value="Entidad/Relación" url="https://www.lucidchart.com/documents/edit/1f677e23-a6c5-4963-80d9-739e9fd9652d/0"/>
+                            <p:menuitem value="Tablas" url="https://www.lucidchart.com/documents/edit/47479d73-4e62-4fde-897b-dfabb3fc2f6a/0"/>
+                        </p:submenu>
+                    </p:menubar>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="60">
+                <ui:insert name="footer"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <ui:insert name="body"/>
+            </p:layoutUnit>
+
+        </p:layout>
+
+    </h:body>
+
+</html>
