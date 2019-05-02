@@ -89,7 +89,7 @@
 
                             <tr>
 
-                                <th colspan="2" scope="rowgroup"> total: ${enca.total}           fecha:${enca.fecha} </th>
+                                <th colspan="2" scope="rowgroup" style="font: cursive"> total: ${enca.total}  fecha:${enca.fecha} </th>
 
                             </tr>
                             <sql:query var="lineas" dataSource="${LADB}">
@@ -109,7 +109,7 @@
                                 <tr>
 
                                     <td>${linea.nombre}</td>
-                                    <td>  ${linea.unidades}</td>
+                                    <td> ____  ${linea.unidades}</td>
                                     <td>${linea.precio_unidad}</td>
                                     <td>${linea.precio_total}</td>
 

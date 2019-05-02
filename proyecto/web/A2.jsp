@@ -36,6 +36,7 @@
 
 
             <%
+                //PUTO EL QUE LO LEA
                 if (model.usuario.isInicio()) {
             %>
             <li><a><%= model.usuario.getNombre()%></a></li>

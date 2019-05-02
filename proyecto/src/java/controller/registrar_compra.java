@@ -12,6 +12,8 @@ import model.Articulo;
 
 public class registrar_compra {
 
+    
+    
     static int registra(List<Articulo> articulos) {
 
         double total = 0;
@@ -21,6 +23,7 @@ public class registrar_compra {
 
             total += Double.parseDouble(articulos.get(i).getPrecio()) * cantidad;
         }
+        
         String no_autogenerado = null;
         try {
 
@@ -61,6 +64,7 @@ public class registrar_compra {
 
                     }
                 }
+                
             } else {
                 System.out.println("?????el key autogenerado no se recuperó");
             }
@@ -75,5 +79,12 @@ public class registrar_compra {
         System.out.println("??????? return 2");
         return 2;
     }
+    
+    
+    
+    
+    
+    
+    
 
 }

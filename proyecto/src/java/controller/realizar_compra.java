@@ -75,6 +75,7 @@ public class realizar_compra extends HttpServlet {
             }
             
         } else {
+                request.getRequestDispatcher("carrito.jsp").forward(request, response);   
             System.out.println("ERROR LLEGA NULL");
         }
 
