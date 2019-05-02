@@ -10,12 +10,13 @@
 
 
         <ui:define name="title">
-            <h:outputText value="ARTICULOS POR ARTISTA"></h:outputText>
+            <h:outputText value="DIRECCIONES"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
-            <p:panel header="ARTICULOS POR ARTISTA">
-                <p:dataTable id="datalist" value="#{conectConsultas.tercerConsulta}" var="item"
+
+            <p:panel header="DIRECCIONES">
+                <p:dataTable id="datalist" value="#{conectConsultas.setimaConsulta}" var="item"
                              selectionMode="single" selection="#{tbTipoController.selected}"
                              paginator="true"
                              rowKey="#{item.id}"
@@ -30,34 +31,42 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ARTISTA"/>
+                            <h:outputText value="CUENTA"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cuenta}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="NOMBRE"/>
                         </f:facet>
                         <h:outputText value="#{item.nombre}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ARTICULO"/>
+                            <h:outputText value="APELLIDO"/>
                         </f:facet>
-                        <h:outputText value="#{item.articulo}"/>
+                        <h:outputText value="#{item.apellido}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TIPO"/>
+                            <h:outputText value="DIRECCIÓN"/>
                         </f:facet>
-                        <h:outputText value="#{item.tipo}"/>
+                        <h:outputText value="#{item.direccion}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="DESCRIPCIÓN"/>
+                            <h:outputText value="DIRECCIÓN 2"/>
                         </f:facet>
-                        <h:outputText value="#{item.descrip}"/>
+                        <h:outputText value="#{item.direccion2}"/>
                     </p:column>
-
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TELEFONO"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telefono}"/>
+                    </p:column>
                 </p:dataTable>
             </p:panel>
-
         </ui:define>
     </ui:composition>
-
 </html>
-

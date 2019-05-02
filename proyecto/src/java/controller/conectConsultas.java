@@ -13,10 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import model.conexion;
 import model.consultas.consulta1;
+import model.consultas.consulta10;
 import model.consultas.consulta2;
 import model.consultas.consulta3;
 import model.consultas.consulta4;
@@ -30,7 +33,7 @@ import model.consultas.consulta8;
  * @author Fabian
  */
 @Named(value = "conectConsultas")
-@SessionScoped
+@RequestScoped
 public class conectConsultas implements Serializable {
 
     private List<consulta1> primerConsulta = new ArrayList<consulta1>();
@@ -42,6 +45,7 @@ public class conectConsultas implements Serializable {
     private List<consulta7> setimaConsulta = new ArrayList<consulta7>();
     private List<consulta8> octavaConsulta = new ArrayList<consulta8>();
     private List<consulta8> novenaConsulta = new ArrayList<consulta8>();
+    private List<consulta10> decimaConsulta = new ArrayList<consulta10>();
 
     private String fecha1;
     private String fecha2;
@@ -279,6 +283,28 @@ public class conectConsultas implements Serializable {
         return "/consultas/promedio.xhtml";
     }
 
+    public String consulta10() {
+
+        try {
+            Statement stm = conexion.getConexion().createStatement();
+            ResultSet result = stm.executeQuery("Select T.id_tarjeta, no_Tarjeta, C.nombre, Correo\n"
+                    + "from TB_TARJETA T, TB_CLIENTE C\n"
+                    + "Where T.ID_TARJETA = C.ID_TARJETA");
+            while (result.next()) {
+                consulta10 consultin = new consulta10();
+                consultin.setId(result.getString(1));
+                consultin.setNumero(result.getString(2));
+                consultin.setNombre(result.getString(3));
+                consultin.setCorreo(result.getString(4));
+                decimaConsulta.add(consultin);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(conectConsultas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "/consultas/tarjeta.xhtml";
+    }
+
     public List<consulta1> getPrimerConsulta() {
         return primerConsulta;
     }
@@ -383,5 +409,12 @@ public class conectConsultas implements Serializable {
         this.novenaConsulta = novenaConsulta;
     }
 
+    public List<consulta10> getDecimaConsulta() {
+        return decimaConsulta;
+    }
+
+    public void setDecimaConsulta(List<consulta10> decimaConsulta) {
+        this.decimaConsulta = decimaConsulta;
+    }
 
 }

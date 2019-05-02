@@ -10,12 +10,13 @@
 
 
         <ui:define name="title">
-            <h:outputText value="ARTICULOS POR ARTISTA"></h:outputText>
+            <h:outputText value="PROMEDIO"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
-            <p:panel header="ARTICULOS POR ARTISTA">
-                <p:dataTable id="datalist" value="#{conectConsultas.tercerConsulta}" var="item"
+
+            <p:panel header="PROMEDIO POR LICENCIA">
+                <p:dataTable id="datalist" value="#{conectConsultas.octavaConsulta}" var="item"
                              selectionMode="single" selection="#{tbTipoController.selected}"
                              paginator="true"
                              rowKey="#{item.id}"
@@ -30,32 +31,24 @@
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ARTISTA"/>
+                            <h:outputText value="LICENCIA"/>
                         </f:facet>
                         <h:outputText value="#{item.nombre}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="ARTICULO"/>
+                            <h:outputText value="CANTIDAD ARTICULOS"/>
                         </f:facet>
-                        <h:outputText value="#{item.articulo}"/>
+                        <h:outputText value="#{item.cantidad}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="TIPO"/>
+                            <h:outputText value="PRECIO PROMEDIO"/>
                         </f:facet>
-                        <h:outputText value="#{item.tipo}"/>
+                        <h:outputText value="#{item.total}"/>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="DESCRIPCIÓN"/>
-                        </f:facet>
-                        <h:outputText value="#{item.descrip}"/>
-                    </p:column>
-
                 </p:dataTable>
             </p:panel>
-
         </ui:define>
     </ui:composition>
 
